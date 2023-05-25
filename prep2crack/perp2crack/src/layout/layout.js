@@ -23,7 +23,7 @@ const Layout = () => {
 
 
 
-            <Container maxWidth="xl">
+           
                 <nav class="stroke">
                     <ul>
                         <li>
@@ -38,7 +38,7 @@ const Layout = () => {
                         </li>
                         <li>
                             <Link exact to="/productandservice">
-                                productandservices
+                                services
                             </Link>
                         </li>
                         <li>
@@ -56,11 +56,11 @@ const Layout = () => {
                         </li>
                     </ul>
                 </nav>
-            </Container>
+           
 
             <Outlet />
 
-            <Container style={{ backgroundColor: '#E2F0FF' }} maxWidth="xl">
+            <Container style={{ backgroundColor: '#E2F0FF' }} maxWidth="xl" sx={{mt: '100px'}}>
                 <Grid container className='footerupper'>
                     <Grid item lg={6} xl={6}>
 
@@ -88,19 +88,19 @@ const Layout = () => {
                             Services
                         </Typography>
                         <Stack direction="row" spacing={1}>
-                            <FiberManualRecordIcon />
+                            <FiberManualRecordIcon style={{fontSize: '10px'}} sx={{pt: '7px'}} />
                             <Typography>
                                 Test Preperation
                             </Typography>
                         </Stack>
                         <Stack direction="row" spacing={1}>
-                            <FiberManualRecordIcon />
+                            <FiberManualRecordIcon style={{fontSize: '10px'}} sx={{pt: '7px'}} />
                             <Typography>
                                 Application Counselling
                             </Typography>
                         </Stack>
                         <Stack direction="row" spacing={1}>
-                            <FiberManualRecordIcon />
+                            <FiberManualRecordIcon style={{fontSize: '10px'}} sx={{pt: '7px'}} />
                             <Typography>
                                 Career Guidance
                             </Typography>
@@ -111,31 +111,31 @@ const Layout = () => {
                             Quick Links
                         </Typography>
                         <Stack direction="row" spacing={1}>
-                            <FiberManualRecordIcon />
+                            <FiberManualRecordIcon style={{fontSize: '10px'}} sx={{pt: '7px'}}/>
                             <Typography>
                                 Home
                             </Typography>
                         </Stack>
                         <Stack direction="row" spacing={1}>
-                            <FiberManualRecordIcon />
+                            <FiberManualRecordIcon style={{fontSize: '10px'}} sx={{pt: '7px'}} />
                             <Typography>
                                About Us
                             </Typography>
                         </Stack>
                         <Stack direction="row" spacing={1}>
-                            <FiberManualRecordIcon />
+                            <FiberManualRecordIcon style={{fontSize: '10px'}} sx={{pt: '7px'}} />
                             <Typography>
                                 Services
                             </Typography>
                         </Stack>
                         <Stack direction="row" spacing={1}>
-                            <FiberManualRecordIcon />
+                            <FiberManualRecordIcon style={{fontSize: '10px'}} sx={{pt: '7px'}} />
                             <Typography>
                                 Study Destination
                             </Typography>
                         </Stack>
                         <Stack direction="row" spacing={1}>
-                            <FiberManualRecordIcon />
+                            <FiberManualRecordIcon style={{fontSize: '10px'}} sx={{pt: '7px'}} />
                             <Typography>
                                 Contact Us
                             </Typography>

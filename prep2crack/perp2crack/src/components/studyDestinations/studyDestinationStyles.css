@@ -1,0 +1,11 @@
+.studyhead {
+    width: 1000px;
+    height: 500px;
+}
+
+.headcontainer {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

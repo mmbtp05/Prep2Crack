@@ -1,14 +1,20 @@
 import React from "react";
-import { Typography } from '@mui/material'
+import { Container, Typography } from '@mui/material'
+import Study from '../../assets/study_des_head.jpg'
+import './studyDestinationStyles.css'
 
 const StudyDestination = () => {
 
     return (
         
         <>
-        <Typography>
-            sttujbcd
-        </Typography>
+        <Container maxWidth="xl" className="headcontainer">
+            <img 
+                src={Study}
+                className="studyhead"
+            />
+
+        </Container>
         </>
 
 

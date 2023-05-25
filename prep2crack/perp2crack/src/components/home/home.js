@@ -11,10 +11,16 @@ import Stack from '@mui/material/Stack';
 
 
 const Home = () => {
+
+    React.useEffect(() => {
+        window.scrollTo({top: 0, behavior: 'smooth' })
+    },[])
+
+
     return (
 
         <>
-            <Container maxWidth="xl" style={{ height: '600px', backgroundColor: 'blue' }}>
+            <Container maxWidth="xl" className='maincontainer'>
                 <Grid container>
                     <Grid item xl={5} lg={5} className="herocontentleft" sx={{ pl: '70px', pt: '150px' }}>
                         <Typography className='upperhead'>
@@ -55,7 +61,7 @@ const Home = () => {
                 </Grid>
             </Container>
             <Container maxWidth="xl">
-                <Grid container sx={{m: '20px'}}> 
+                <Grid container sx={{ m: '20px' }}>
                     <Grid item lg={6} xl={6}>
 
                     </Grid>
@@ -67,30 +73,24 @@ const Home = () => {
                             Personalized attention, Result driven approach, Economic
                         </Typography>
                         <Typography>
-                            The align-content property specifies how flex lines are distributed along the cross axis in a flexbox container.
-
-                            In flexbox layout, the main axis is in the flex-direction (default is 'row', horizontal), and the cross axis is perpendicular to the main axis (default is 'column', vertical).
-
-                            Tip: Use the justify-content property to align the items on the main axis (horizontally).
-
-                            Note: The align-content property can also be used on a grid container to align grid items in the block direction. For pages in English, block direction is downward and inline direction is left to right.
+                            At Prep2Crack, we understand that applying to colleges around the globe requires proper knowledge, research and time. That’s why we provide personalized guidance to make sure you reach your goals. With our personalized attention, you won’t get lost in the crowd or frustrated with a generic approach—you’ll have the resources and support to get into your dream university. What are you waiting for? Start now and achieve your dream of studying Abroad with Prep2Crack!
                         </Typography>
                         <Card className="whycard">
                             <CardContent>
                                 <Stack direction="row" spacing={1}>
-                                    <FiberManualRecordIcon />
+                                    <FiberManualRecordIcon style={{fontSize: '10px'}} sx={{pt: '7px'}}/>
                                     <Typography>
                                         Customized Tutoring
                                     </Typography>
                                 </Stack>
                                 <Stack direction="row" spacing={1}>
-                                    <FiberManualRecordIcon />
+                                    <FiberManualRecordIcon style={{fontSize: '10px'}} sx={{pt: '7px'}}/>
                                     <Typography>
                                         100% Assistance of Application Process
                                     </Typography>
                                 </Stack>
                                 <Stack direction="row" spacing={1}>
-                                    <FiberManualRecordIcon />
+                                    <FiberManualRecordIcon style={{fontSize: '10px'}} sx={{pt: '7px'}}/>
                                     <Typography>
                                         Guidance for Education Loan
                                     </Typography>
@@ -104,7 +104,7 @@ const Home = () => {
                 </Grid>
             </Container>
             <Container>
-                    
+
             </Container>
         </>
 
@@ -117,17 +117,17 @@ const service = [
     {
         head: 'Test',
         subhead: 'Preperation',
-        content: 'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except AntarcticaLizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except AntarcticaLizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except AntarcticaLizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except AntarcticaLizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except AntarcticaLizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except AntarcticaLizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except AntarcticaLizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica',
+        content: 'We will help you ACE any standardized test that is required during your Study Abroad journey, whether it be SAT, GRE, GMAT, IELTS, TOEFL or PTE. Our certified trainers, time tested strategies, real time practice tests and regular performance analysis will get you test ready in no time.',
     },
     {
         head: 'Application',
         subhead: 'Counselling',
-        content: 'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except AntarcticaLizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except AntarcticaLizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except AntarcticaLizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except AntarcticaLizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except AntarcticaLizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except AntarcticaLizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except AntarcticaLizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica',
+        content: 'Get assisted throughout your application journey by our team of skilled mentors. Our mentors will help you in each step  of Building your profile, Shortlisting of colleges, Filling your application, Editing your SOPs, LORs & Resume, Preparing for VISA Interview, Counselling before departure.'
     },
     {
         head: 'Career',
         subhead: 'Guidance',
-        content: 'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except AntarcticaLizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except AntarcticaLizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except AntarcticaLizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except AntarcticaLizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except AntarcticaLizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except AntarcticaLizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except AntarcticaLizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica',
+        content: 'Career counselling helps you understand yourself better by identifying your strengths and interests and exploring various career options. Career counsellors work on your profile from as early as 9th grade by preparing a customized roadmap for you. Experts and mentors provide relevant resources and updated information needed to develop your career and lead you on the path of professional success.',
     },
 ]
 
