@@ -1,5 +1,8 @@
-import React, { useState } from 'react'
-import { Typography, Container, Grid, TextField } from '@mui/material'
+import React, { useEffect, useState } from 'react'
+import { Container, Grid, TextField, Button, useMediaQuery, useTheme } from '@mui/material'
+import ContactUss from '../../assets/Contact-us.png'
+import MenuItem from '@mui/material/MenuItem';
+import axios from '../../axios'
 
 const ContactUs = () => {
 
@@ -7,18 +10,110 @@ const ContactUs = () => {
     const [email, setEmail] = useState("");
     const [subject, setSubject] = useState("");
     const [message, setMessage] = useState("");
+    const [number, setNumber] = useState("");
+
+
+    const [errorName, setErrorName] = useState(false);
+    const [errorEmail, setErrorEmail] = useState(false);
+    const [errorSubject, setErrorSubject] = useState(false);
+    const [errorNumber, setErrorNumber] = useState(false);
+
+
+    useEffect(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+    }, [])
+
+    const theme = useTheme();
+    const mobile = useMediaQuery(theme.breakpoints.down("md"));
+
+
+    const subjects = [
+        {
+            value: 'SAT',
+            label: '1',
+        },
+        {
+            value: 'GMAT',
+            label: '2',
+        },
+        {
+            value: 'GRE',
+            label: '3',
+        },
+        {
+            value: 'TOEFL',
+            label: '4',
+        },
+        {
+            value: 'ILETS',
+            label: '5',
+        },
+        {
+            value: 'Admission Counselling',
+            label: '6',
+        },
+        {
+            value: 'Career Guidance',
+            label: '7',
+        },
+
+
+    ];
+
+
+    const handleSubmit = (name, email, subject, message, number) => {
+        axios.post(`form/`, {
+            name: name,
+            email: email,
+            subject: subject,
+            message: message,
+            phone_no: number
+        }).then((res) => {
+            setErrorEmail(false)
+            setErrorName(false)
+            setErrorNumber(false)
+            setErrorSubject(false)
+            console.log(res)
+        }).catch((error) => {
+            if (error.response.data.name) {
+                setErrorName(true)
+            }
+            if (error.response.data.email) {
+                setErrorEmail(true)
+            }
+            if (error.response.data.subject) {
+                setErrorSubject(true)
+            }
+            if (error.response.data.phone_no) {
+                setErrorNumber(true)
+            }
+        })
+    }
+
 
 
 
     return (
         <>
 
-            <Container maxWidth="xl" sx={{ mt: '150px' }}>
+            <Container maxWidth="xl" sx={{ mt: { lg: '150px', xl: '150px' }, mb: '80px' }}>
                 <Grid container>
-                    <Grid item xl={6} lg={6}>
-
+                    <Grid item xl={6} lg={6.5} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                        {mobile ?
+                            <img
+                                src={ContactUss}
+                                alt="contact-us"
+                                style={{ width: '250px', height: '300px' }}
+                            />
+                            :
+                            <img
+                                src={ContactUss}
+                                alt="contact-us"
+                                style={{ width: '500px', height: '400px' }}
+                            />
+                        }
                     </Grid>
-                    <Grid item xl={6} lg={5}>
+                    <Grid item xl={6} lg={5.5}>
                         <TextField
                             value={name}
                             label="Enter your name"
@@ -27,9 +122,11 @@ const ContactUs = () => {
                             }}
                             size='small'
                             fullWidth
-                            sx={{mt: '20px' , mb: '20px' }}
+                            sx={{ mt: '20px', mb: '20px' }}
+                            error={errorName ? true : false}
+                            helperText={errorName ? "Please enter your name" : null}
                         />
-                         <TextField
+                        <TextField
                             value={email}
                             label="Email"
                             onChange={(e) => {
@@ -37,10 +134,11 @@ const ContactUs = () => {
                             }}
                             size='small'
                             fullWidth
-                            sx={{mt: '20px' , mb: '20px'}}
-
+                            sx={{ mt: '20px', mb: '20px' }}
+                            error={errorEmail ? true : false}
+                            helperText={errorEmail ? "Please enter a valid email address" : null}
                         />
-                         <TextField
+                        <TextField
                             value={subject}
                             label="Subject"
                             onChange={(e) => {
@@ -48,11 +146,30 @@ const ContactUs = () => {
                             }}
                             size='small'
                             fullWidth
-                            // rows={5}
-                            sx={{mt: '20px' , mb: '20px'}}
-
+                            select
+                            sx={{ mt: '20px', mb: '20px' }}
+                            error={errorSubject ? true : false}
+                            helperText={errorSubject ? "Please select a subject" : null}
+                        >
+                            {subjects.map((option) => (
+                                <MenuItem key={option.value} value={option.value}>
+                                    {option.value}
+                                </MenuItem>
+                            ))}
+                        </TextField>
+                        <TextField
+                            value={number}
+                            label="Mobile Number"
+                            onChange={(e) => {
+                                setNumber(e.target.value);
+                            }}
+                            size='small'
+                            fullWidth
+                            sx={{ mt: '20px', mb: '20px' }}
+                            error={number.length > 10 || errorNumber ? true : false}
+                            helperText={number.length > 10 || errorNumber ? "Please enter a valid number" : null}
                         />
-                         <TextField
+                        <TextField
                             value={message}
                             label="Your Message"
                             onChange={(e) => {
@@ -62,9 +179,21 @@ const ContactUs = () => {
                             fullWidth
                             multiline
                             rows={4}
-                            sx={{mt: '20px' , mb: '20px'}}
-
+                            sx={{ mt: '20px', mb: '20px' }}
                         />
+                        <Button
+                            variant="container"
+                            style={{
+                                backgroundColor: 'darkblue',
+                                color: 'white',
+                                borderRadius: '20px',
+                                fontFamily: 'system-ui',
+                                fontWeight: 'bold'
+                            }}
+                            onClick={() => handleSubmit(name, email, subject, message, number)}
+                        >
+                            Submit
+                        </Button>
                     </Grid>
                 </Grid>
             </Container>

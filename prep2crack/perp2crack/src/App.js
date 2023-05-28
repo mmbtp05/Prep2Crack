@@ -1,5 +1,8 @@
 import { useRoutes } from 'react-router-dom';
 import { Pages } from './routes/routes';
+import store from '../src/redux/store'
+import { Provider } from 'react-redux'
+import Carousel from './carousal/carousal';
 
 function App() {
 
@@ -7,12 +10,13 @@ function App() {
   return (
 
     <>
-    
-    {all_pages}
 
+      <Provider store={store}>
+        {all_pages}
+      </Provider>
 
     </>
-    
+
   );
 }
 
