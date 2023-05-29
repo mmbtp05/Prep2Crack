@@ -175,7 +175,7 @@ const ContactUs = () => {
                             size='small'
                             fullWidth
                             sx={{ mt: '20px', mb: '20px' }}
-                            error={number.length != 10 || errorNumber ? true : false}
+                            error={number.length != 10  || errorNumber ? true : false}
                             helperText={number.length != 10 || errorNumber ? "Please enter a valid number" : null}
                         />
                         <TextField
