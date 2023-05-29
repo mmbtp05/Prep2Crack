@@ -159,7 +159,7 @@ const Layout = () => {
                             <IconButton href="https://www.facebook.com/profile.php?id=100089485518027" target="_blank" rel="noopener noreferrer">
                                 <FacebookIcon style={{color: 'black'}} />
                             </IconButton>
-                            <IconButton href="https://www.instagram.com/prep2crack_/" target="_blank" rel="noopener noreferrer">
+                            <IconButton href="https://www.instagram.com/prep2crack_" target="_blank" rel="noopener noreferrer">
                                 <InstagramIcon style={{color: 'black'}} />
                             </IconButton>
                             <IconButton href="https://www.linkedin.com/company/90628409/" target="_blank" rel="noopener noreferrer">

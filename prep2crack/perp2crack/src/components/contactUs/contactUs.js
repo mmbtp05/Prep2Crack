@@ -66,26 +66,35 @@ const ContactUs = () => {
             name: name,
             email: email,
             subject: subject,
-            message: message,
+            message: message.length === 0 ? "NO MESSAGE" : message,
             phone_no: number
         }).then((res) => {
             setErrorEmail(false)
             setErrorName(false)
             setErrorNumber(false)
             setErrorSubject(false)
+            window.location.reload()
             console.log(res)
         }).catch((error) => {
             if (error.response.data.name) {
                 setErrorName(true)
+            }else{
+                setErrorName(false)
             }
             if (error.response.data.email) {
                 setErrorEmail(true)
+            }else{
+                setErrorEmail(false)
             }
             if (error.response.data.subject) {
                 setErrorSubject(true)
+            }else{
+                setErrorSubject(false)
             }
             if (error.response.data.phone_no) {
                 setErrorNumber(true)
+            }else{
+                setErrorNumber(false)
             }
         })
     }
@@ -166,8 +175,8 @@ const ContactUs = () => {
                             size='small'
                             fullWidth
                             sx={{ mt: '20px', mb: '20px' }}
-                            error={number.length > 10 || errorNumber ? true : false}
-                            helperText={number.length > 10 || errorNumber ? "Please enter a valid number" : null}
+                            error={number.length != 10 || errorNumber ? true : false}
+                            helperText={number.length != 10 || errorNumber ? "Please enter a valid number" : null}
                         />
                         <TextField
                             value={message}

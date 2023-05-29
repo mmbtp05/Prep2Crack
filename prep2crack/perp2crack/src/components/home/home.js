@@ -12,23 +12,27 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import whyp2c from '../../assets/whyprep2crack.jpg'
 import { useTheme } from '@mui/material';
-// import { Divider } from '@mui/material';
 // import Carousel from '../../carousal/carousal';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAchievementOfCoaching } from '../../redux/actions/homeActions';
+import { getAchievementOfCoaching, getTestimonials } from '../../redux/actions/homeActions';
 import testprep from '../../assets/Test Prep- Home Page.png'
 import admcounsel from '../../assets/Admission Counselling - Home Page.png'
 import careerguide from '../../assets/Career Guidance - Home Page.png'
 import Carousel from '../../carousal/carousal';
-
+import CircularProgress from '@mui/material/CircularProgress';
 
 const Home = () => {
 
     const theme = useTheme();
     const mobile = useMediaQuery(theme.breakpoints.down("md"));
     const dispatch = useDispatch();
-    const [achievement, setAchievement] = useState(null);
-    // const data = useSelector(state => state.achievement.achievement);
+    const [achievements, setAchievements] = useState(null);
+    const [testimonials, setTestimonials] = useState(null);
+    const data_achievement = useSelector(state => state.homeStuff.achievement);
+    const data_testimonials = useSelector(state => state.homeStuff.testimonials);
+    const [loadingAchievement, setLoadingAchievement] = useState(true);
+    const [loadingTestimonials, setLoadingTestimonials] = useState(true);
+
 
     const navigation = useNavigate();
 
@@ -36,18 +40,29 @@ const Home = () => {
         window.scrollTo({ top: 0, behavior: 'auto', left: 0 })
     }, [])
 
-    // useEffect(() => {
-    //     dispatch(getAchievementOfCoaching());
-    // },[])
+    useEffect(() => {
+        dispatch(getAchievementOfCoaching());
+    }, [])
 
-    // useEffect(() => {
-    //     if(data){
-    //         setAchievement(data);
-    //     }
-    // },[data])
+    useEffect(() => {
+        dispatch(getTestimonials());
+    }, [])
 
-    // console.log(achievement)
+    useEffect(() => {
+        if (data_testimonials) {
+            setTestimonials(data_testimonials);
+            setLoadingTestimonials(false);
+        }
+    }, [data_testimonials])
 
+    useEffect(() => {
+        if (data_achievement) {
+            setAchievements(data_achievement);
+            setLoadingAchievement(false);
+        }
+    }, [data_achievement])
+
+    console.log(testimonials)
 
 
 
@@ -219,48 +234,64 @@ const Home = () => {
                 <Typography className='testimonial' textAlign="center">
                     Testimonials
                 </Typography>
-                {/* <Carousel
+                <Carousel
                     show={4}
                 >
-                  
-                   
-                </Carousel> */}
+                    {loadingTestimonials ? <CircularProgress /> : testimonials.map((testimonial, i) => (
+                        <Grid container>
+                            <Grid item lg={3} xl={3}>
+                                <img
+                                    src={testimonial.image}
+                                    alt="testimonial"
+                                />
+                                <Typography>
+                                    {testimonial.name}
+                                </Typography>
+                                <Typography>
+                                    {testimonial.score}
+                                </Typography>
+                            </Grid>
+                        </Grid>
+                    ))}
+                </Carousel>
             </Container>
             <Container maxWidth="xl" className='figurecontainer'>
-                <Grid container>
-                    <Grid item lg={3} xl={3} sx={{ p: '40px' }}>
-                        <Typography className='figures'>
-                            12+
-                        </Typography>
-                        <Typography className='figuresofwhat'>
-                            Admits Recieved by Our Students
-                        </Typography>
+                {loadingAchievement ? <CircularProgress /> : achievements.map((achievement, i) => (
+                    <Grid container>
+                        <Grid item lg={3} xl={3} sx={{ p: '40px' }} sm={6} xs={6} md={6}>
+                            <Typography className='figures'>
+                                {achievement.admin_recieved + "+"}
+                            </Typography>
+                            <Typography className='figuresofwhat'>
+                                Admits Recieved by Our Students
+                            </Typography>
+                        </Grid>
+                        <Grid item lg={3} xl={3} sx={{ p: '40px' }} sm={6} xs={6} md={6}>
+                            <Typography className='figures'>
+                                {achievement.experience + "+"}
+                            </Typography>
+                            <Typography className='figuresofwhat'>
+                                Years of Combined Experience
+                            </Typography>
+                        </Grid>
+                        <Grid item lg={3} xl={3} sx={{ p: '40px' }} sm={6} xs={6} md={6}>
+                            <Typography className='figures'>
+                                {achievement.test_clear + "+"}
+                            </Typography>
+                            <Typography className='figuresofwhat'>
+                                Standardized Test Cleared
+                            </Typography>
+                        </Grid>
+                        <Grid item lg={3} xl={3} sx={{ p: '40px' }} sm={6} xs={6} md={6}>
+                            <Typography className='figures'>
+                                {achievement.scholarship + "M+"}
+                            </Typography>
+                            <Typography className='figuresofwhat'>
+                                Worth Scholarships Achieved by Students
+                            </Typography>
+                        </Grid>
                     </Grid>
-                    <Grid item lg={3} xl={3} sx={{ p: '40px' }}>
-                        <Typography className='figures'>
-                            12+
-                        </Typography>
-                        <Typography className='figuresofwhat'>
-                            Years of Combined Experience
-                        </Typography>
-                    </Grid>
-                    <Grid item lg={3} xl={3} sx={{ p: '40px' }}>
-                        <Typography className='figures'>
-                            12+
-                        </Typography>
-                        <Typography className='figuresofwhat'>
-                            Standardized Test Cleared
-                        </Typography>
-                    </Grid>
-                    <Grid item lg={3} xl={3} sx={{ p: '40px' }}>
-                        <Typography className='figures'>
-                            12M+
-                        </Typography>
-                        <Typography className='figuresofwhat'>
-                            Worth Scholarships Achieved by Students
-                        </Typography>
-                    </Grid>
-                </Grid>
+                ))}
             </Container>
         </>
 
