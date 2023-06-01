@@ -9,7 +9,7 @@ import CardContent from '@mui/material/CardContent';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import Stack from '@mui/material/Stack';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef , useMemo} from 'react';
 import whyp2c from '../../assets/whyprep2crack.jpg'
 import { useTheme } from '@mui/material';
 // import Carousel from '../../carousal/carousal';
@@ -19,34 +19,33 @@ import testprep from '../../assets/Test Prep- Home Page.png'
 import admcounsel from '../../assets/Admission Counselling - Home Page.png'
 import careerguide from '../../assets/Career Guidance - Home Page.png'
 import Carousel from '../../carousal/carousal';
-import CircularProgress from '@mui/material/CircularProgress';
+import Loading from '../Loading/Loading';
+import anshul from '../../assets/anshulsaini.jpeg'
+import Number from '../numberAnimation/number';
+
+
 
 const Home = () => {
 
     const theme = useTheme();
     const mobile = useMediaQuery(theme.breakpoints.down("md"));
     const dispatch = useDispatch();
-    const [achievements, setAchievements] = useState(null);
-    const [testimonials, setTestimonials] = useState(null);
+    const [achievements, setAchievements] = useState();
+    const [testimonials, setTestimonials] = useState();
     const data_achievement = useSelector(state => state.homeStuff.achievement);
     const data_testimonials = useSelector(state => state.homeStuff.testimonials);
     const [loadingAchievement, setLoadingAchievement] = useState(true);
     const [loadingTestimonials, setLoadingTestimonials] = useState(true);
-
-
+    const reference = useRef(null);
+    const isVisible = useIntersection(reference,'0px');
     const navigation = useNavigate();
 
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'auto', left: 0 })
-    }, [])
-
-    useEffect(() => {
         dispatch(getAchievementOfCoaching());
-    }, [])
-
-    useEffect(() => {
         dispatch(getTestimonials());
     }, [])
+
 
     useEffect(() => {
         if (data_testimonials) {
@@ -62,12 +61,12 @@ const Home = () => {
         }
     }, [data_achievement])
 
-    console.log(testimonials)
 
 
 
     return (
 
+        // achievements && testimonials &&
         <>
             <Container maxWidth="xl" className='maincontainer'>
                 <Grid container>
@@ -129,8 +128,6 @@ const Home = () => {
                             ))}
 
                         </Carousel>
-
-
                         :
                         <>
                             {service.map((s, i) => (
@@ -166,10 +163,7 @@ const Home = () => {
                                 </Grid>
                             ))}
                         </>
-
                     }
-
-
                 </Grid>
             </Container>
             <Container maxWidth="xl">
@@ -227,72 +221,107 @@ const Home = () => {
                     </Grid>
                 </Grid>
             </Container>
-            <Container maxWidth="xl">
-                <Typography className='whyhead' textAlign="center">
-                    Wall of Success Story
-                </Typography>
-                <Typography className='testimonial' textAlign="center">
-                    Testimonials
-                </Typography>
-                <Carousel
-                    show={4}
-                >
-                    {loadingTestimonials ? <CircularProgress /> : testimonials.map((testimonial, i) => (
-                        <Grid container>
-                            <Grid item lg={3} xl={3}>
-                                <img
-                                    src={testimonial.image}
-                                    alt="testimonial"
-                                />
-                                <Typography>
-                                    {testimonial.name}
-                                </Typography>
-                                <Typography>
-                                    {testimonial.score}
-                                </Typography>
-                            </Grid>
-                        </Grid>
-                    ))}
-                </Carousel>
-            </Container>
-            <Container maxWidth="xl" className='figurecontainer'>
-                {loadingAchievement ? <CircularProgress /> : achievements.map((achievement, i) => (
-                    <Grid container>
-                        <Grid item lg={3} xl={3} sx={{ p: '40px' }} sm={6} xs={6} md={6}>
-                            <Typography className='figures'>
-                                {achievement.admin_recieved + "+"}
-                            </Typography>
-                            <Typography className='figuresofwhat'>
-                                Admits Recieved by Our Students
-                            </Typography>
-                        </Grid>
-                        <Grid item lg={3} xl={3} sx={{ p: '40px' }} sm={6} xs={6} md={6}>
-                            <Typography className='figures'>
-                                {achievement.experience + "+"}
-                            </Typography>
-                            <Typography className='figuresofwhat'>
-                                Years of Combined Experience
-                            </Typography>
-                        </Grid>
-                        <Grid item lg={3} xl={3} sx={{ p: '40px' }} sm={6} xs={6} md={6}>
-                            <Typography className='figures'>
-                                {achievement.test_clear + "+"}
-                            </Typography>
-                            <Typography className='figuresofwhat'>
-                                Standardized Test Cleared
-                            </Typography>
-                        </Grid>
-                        <Grid item lg={3} xl={3} sx={{ p: '40px' }} sm={6} xs={6} md={6}>
-                            <Typography className='figures'>
-                                {achievement.scholarship + "M+"}
-                            </Typography>
-                            <Typography className='figuresofwhat'>
-                                Worth Scholarships Achieved by Students
-                            </Typography>
-                        </Grid>
-                    </Grid>
-                ))}
-            </Container>
+            {testimonials &&
+                <div>
+                    <Container maxWidth="xl" sx={{ pt: '80px', pb: '30px' }}>
+                        <Typography className='whyhead' textAlign="center">
+                            Wall of Success Story
+                        </Typography>
+                        <Typography className='testimonial' textAlign="center">
+                            Testimonials
+                        </Typography>
+                        <Carousel
+                            show={4}
+                        >
+                            {loadingTestimonials ? <Loading />
+                                :
+                                testimonials.map((testimonial, i) => (
+                                    <Grid container>
+                                        <Grid item lg={12} xl={12} sm={12} md={12} xs={12} key={i} sx={{ p: '30px' }}>
+                                            <Box style={{ justifyContent: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                                <img
+                                                    src={anshul}
+                                                    alt="testimonial"
+                                                    style={{ width: '200px', height: '300px' }}
+                                                />
+                                                <Typography className='testimonialname'>
+                                                    {testimonial.name}
+                                                </Typography>
+                                                <Typography>
+                                                    {testimonial.score}
+                                                </Typography>
+                                            </Box>
+                                        </Grid>
+                                    </Grid>
+                                ))}
+                        </Carousel>
+                    </Container>
+                </div>
+            }
+            {achievements &&
+                <div ref={reference}>
+                    <Container maxWidth="xl" className='figurecontainer'>
+                        {loadingAchievement ? <Loading />
+                            :
+                            achievements.map((achievement) => (
+                                <Grid container>
+                                    <Grid item lg={3} xl={3} sx={{ p: '40px' }} sm={6} xs={12} md={6}>
+                                        <Stack direction="row" style={{ display: 'flex', justifyContent: 'center' }}>
+                                            <Typography className='figures'>
+                                                {isVisible ? <Number data={achievement.admin_recieved} /> : achievement.admin_recieved}
+                                            </Typography>
+                                            <Typography className='figures'>
+                                                +
+                                            </Typography>
+                                        </Stack>
+                                        <Typography className='figuresofwhat'>
+                                            Admits Recieved by Our Students
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item lg={3} xl={3} sx={{ p: '40px' }} sm={6} xs={12} md={6}>
+                                        <Stack direction="row" style={{ display: 'flex', justifyContent: 'center' }}>
+                                            <Typography className='figures'>
+                                                <Number data={achievement.experience} />
+                                            </Typography>
+                                            <Typography className='figures'>
+                                                +
+                                            </Typography>
+                                        </Stack>
+                                        <Typography className='figuresofwhat'>
+                                            Years of Combined Experience
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item lg={3} xl={3} sx={{ p: '40px' }} sm={6} xs={12} md={6}>
+                                        <Stack direction="row" style={{ display: 'flex', justifyContent: 'center' }}>
+                                            <Typography className='figures'>
+                                                <Number data={achievement.test_clear} />
+                                            </Typography>
+                                            <Typography className='figures'>
+                                                +
+                                            </Typography>
+                                        </Stack>
+                                        <Typography className='figuresofwhat'>
+                                            Standardized Test Cleared
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item lg={3} xl={3} sx={{ p: '40px' }} sm={6} xs={12} md={6}>
+                                        <Stack direction="row" style={{ display: 'flex', justifyContent: 'center' }}>
+                                            <Typography className='figures'>
+                                                <Number data={achievement.scholarship} />
+                                            </Typography>
+                                            <Typography className='figures'>
+                                                M+
+                                            </Typography>
+                                        </Stack>
+                                        <Typography className='figuresofwhat'>
+                                            Worth Scholarships Achieved by Students
+                                        </Typography>
+                                    </Grid>
+                                </Grid>
+                            ))}
+                    </Container>
+                </div>
+            }
         </>
 
     )
@@ -323,4 +352,23 @@ const service = [
         content: 'Career counselling helps you understand yourself better by identifying your strengths and interests and exploring various career options. Career counsellors work on your profile from as early as 9th grade by preparing a customized roadmap for you. Experts and mentors provide relevant resources and updated information needed to develop your career and lead you on the path of professional success.',
     },
 ]
+
+const useIntersection = (element, rootMargin) => {
+    const [isVisible, setState] = useState(false);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setState(entry.isIntersecting);
+            }, { rootMargin }
+        );
+
+        element.current && observer.observe(element.current);
+
+        return () => observer.unobserve(element.current);
+    }, []);
+
+    return isVisible;
+};
+
 

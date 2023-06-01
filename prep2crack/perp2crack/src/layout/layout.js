@@ -40,6 +40,10 @@ const Layout = () => {
         setMobileOpen(!mobileOpen)
     }
 
+    const mobileBook = () => {
+        handleDrawerToggle();
+        navigation("/contact");
+    }
 
     const drawer = (
         <div>
@@ -76,7 +80,7 @@ const Layout = () => {
                 </ListItem>
 
                 <ListItem>
-                    <Button variant="contained" className='button' onClick={() => handleDrawerToggle() && navigation("/contact")}>Book a Demo</Button>
+                    <Button variant="contained" className='button' onClick={() => mobileBook()}>Book a Demo</Button>
                 </ListItem>
 
 
@@ -114,27 +118,27 @@ const Layout = () => {
                     <ul>
                         <li>
                             <Link exact to="/">
-                                Home
+                                HOME
                             </Link>
                         </li>
                         <li>
                             <Link exact to="/aboutUs">
-                                aboutUs
+                                ABOUT US
                             </Link>
                         </li>
                         <li>
                             <Link exact to="/productandservice">
-                                services
+                                SERVICES
                             </Link>
                         </li>
                         <li>
                             <Link exact to="/studydestination">
-                                studydestination
+                                STUDY DESTINATION
                             </Link>
                         </li>
                         <li>
                             <Link exact to="/contact">
-                                contactus
+                                CONTACT US
                             </Link>
                         </li>
                         <li>

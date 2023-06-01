@@ -49,12 +49,16 @@ const ContactUs = () => {
             label: '5',
         },
         {
-            value: 'Admission Counselling',
+            value: 'PTE',
             label: '6',
         },
         {
-            value: 'Career Guidance',
+            value: 'Admission Counselling',
             label: '7',
+        },
+        {
+            value: 'Career Guidance',
+            label: '8',
         },
 
 
@@ -73,27 +77,31 @@ const ContactUs = () => {
             setErrorName(false)
             setErrorNumber(false)
             setErrorSubject(false)
-            window.location.reload()
-            console.log(res)
+            setName("")
+            setEmail("")
+            setSubject("")
+            setMessage("")
+            setNumber("")
+            alert("Your information has been submitted.")
         }).catch((error) => {
             if (error.response.data.name) {
                 setErrorName(true)
-            }else{
+            } else {
                 setErrorName(false)
             }
             if (error.response.data.email) {
                 setErrorEmail(true)
-            }else{
+            } else {
                 setErrorEmail(false)
             }
             if (error.response.data.subject) {
                 setErrorSubject(true)
-            }else{
+            } else {
                 setErrorSubject(false)
             }
             if (error.response.data.phone_no) {
                 setErrorNumber(true)
-            }else{
+            } else {
                 setErrorNumber(false)
             }
         })
@@ -175,8 +183,8 @@ const ContactUs = () => {
                             size='small'
                             fullWidth
                             sx={{ mt: '20px', mb: '20px' }}
-                            error={number.length != 10  || errorNumber ? true : false}
-                            helperText={number.length != 10 || errorNumber ? "Please enter a valid number" : null}
+                            error={number.length > 10 || errorNumber ? true : false}
+                            helperText={number.length > 10 || errorNumber ? "Please enter a valid number" : null}
                         />
                         <TextField
                             value={message}

@@ -1,8 +1,8 @@
 import React, { Suspense } from 'react';
-import CircularProgress from '@mui/material/CircularProgress';
+import Loading from '../Loading/Loading';
 
 const Loadable = (Component) => (props) => (
-   <Suspense fallback={<CircularProgress sx={{mt: '150px'}} />}>
+   <Suspense fallback={<Loading />}>
       <Component {...props} />
    </Suspense>
 );

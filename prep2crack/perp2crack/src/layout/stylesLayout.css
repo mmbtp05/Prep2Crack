@@ -2,7 +2,8 @@ nav {
     width: 100%;
     top: 0;
     margin: 0 auto;
-    background: rgb(0, 100, 255, 1);
+    /* background: rgb(0, 100, 255, 1); */
+    background-color: #6CB4EE;
     /* background: linear-gradient(180deg, rgba(2, 0, 36, 1) 0%, rgba(0, 56, 255, 1) 0%, rgba(0, 212, 255, 1) 100%); */
     padding: 1px 0;
     /* box-shadow: 0px 5px 0px #dedede; */
@@ -29,8 +30,8 @@ nav ul li a {
     text-decoration: none;
     color: white;
     font-weight: 800;
-    text-transform: uppercase;
     margin: 0 10px;
+    text-transform: none;
 }
 
 nav ul li a,
