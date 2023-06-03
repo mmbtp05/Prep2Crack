@@ -28,7 +28,7 @@ const AboutUs = () => {
                     <>
                         <Grid container>
                             <Grid item lg={6} xl={6} sx={{ p: { lg: '55px', xl: '55px', md: '55px' } }}>
-                                <Typography className='about' sx={{ pt: '130px', pl: '150px' }}>
+                                <Typography className='about' sx={{ pt: '150px' }}>
                                     About Us
                                 </Typography>
                             </Grid>
@@ -36,7 +36,7 @@ const AboutUs = () => {
                                 <img
                                     src={about}
                                     alt="about-us"
-                                    style={{ width: '300px', height: '250px' }}
+                                    style={{ width: '400px', height: '300px' }}
                                 />
                             </Grid>
                         </Grid>
@@ -44,7 +44,7 @@ const AboutUs = () => {
                     :
                     <>
                         <Grid container>
-                            <Grid item lg={6} xl={6} sx={12} xs={12} md={12}>
+                            <Grid item lg={6} xl={6} sx={12} xs={12} md={12} style={{ display: 'flex', justifyContent: 'center' }}>
                                 <img
                                     src={about}
                                     alt="about-us"
@@ -84,9 +84,15 @@ const AboutUs = () => {
             </Container>
             <Container maxWidth="lg" sx={{ mt: '50px', mb: '80px' }}>
                 <Card className='card' sx={{ p: '50px' }}>
-                    <Typography className='teamheading'>
-                        Meet our amazing team.
-                    </Typography>
+                    {!mobile ?
+                        <Typography className='teamheading'>
+                            Meet our amazing team.
+                        </Typography>
+                        :
+                        <Typography className='teamheadingmob'>
+                            Meet our amazing team.
+                        </Typography>
+                    }
                     <Grid container sx={{ pt: '50px' }}>
                         <Grid item lg={4} xl={4} sm={12} xs={12} md={12} sx={{ pb: '30px' }}>
                             <Box

@@ -22,7 +22,7 @@ const ProductAndService = () => {
     return (
 
         <>
-            <Container maxWidth="xl" className='panddcontainer'>
+            <Container maxWidth="xl" className={mobile ? 'panddcontainermob' : 'panddcontainer'}>
                 <Grid container>
                     {!mobile ?
                         <>
@@ -36,17 +36,17 @@ const ProductAndService = () => {
                                     Our education consultants will work with you and your family to plan the next step on your educational journey.
                                 </Typography>
                             </Grid>
-                            <Grid item lg={6} xl={6} sm={12} xs={12} md={12} sx={{ p: { lg: '80px', xl: '80px', md: '80px' } }}>
+                            <Grid item lg={6} xl={6} sm={12} xs={12} md={12} sx={{ p: { lg: '80px', xl: '80px', md: '80px' } }} style={{display: 'flex' , justifyContent:'center'}}>
                                 <img
                                     src={Services}
                                     alt="services"
-                                    style={{ width: '300px', height: '250px' }}
+                                    style={{ width: '400px', height: '300px' }}
                                 />
                             </Grid>
                         </>
                         :
                         <>
-                            <Grid item lg={6} xl={6} sm={12} xs={12} md={12}>
+                            <Grid item lg={6} xl={6} sm={12} xs={12} md={12} style={{display: 'flex' , justifyContent:'center'}}>
                                 <img
                                     src={Services}
                                     alt="services"
@@ -54,10 +54,10 @@ const ProductAndService = () => {
                                 />
                             </Grid>
                             <Grid item lg={6} xl={6} sm={12} xs={12} md={12}>
-                                <Typography className='pandd'>
+                                <Typography className='panddmob'>
                                     Product and Services
                                 </Typography>
-                                <Typography className='panddcontent'>
+                                <Typography className='panddcontentmob'>
                                     We will be here for you every step of the way.
                                     <br></br>
                                     Our education consultants will work with you and your family to plan the next step on your educational journey.

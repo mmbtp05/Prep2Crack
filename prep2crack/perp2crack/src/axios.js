@@ -9,9 +9,9 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
 axios.defaults.baseURL = "https://backend.prep2crack.com/";
 
 
-axios.defaults.withCredentials = true;
-axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
-axios.defaults.xsrfCookieName = "_xsrf";
+// axios.defaults.withCredentials = true;
+// axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+// axios.defaults.xsrfCookieName = "_xsrf";
 
 // axios.defaults
 

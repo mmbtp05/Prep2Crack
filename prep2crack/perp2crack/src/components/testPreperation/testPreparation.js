@@ -21,12 +21,15 @@ const TestPreparation = () => {
 
     return (
         <>
-            <Container maxWidth="xl" sx={{ mt: {lg: '150px' , xl: '150px'} , mb: '80px'}}>
+            <Container maxWidth="xl" sx={{ mt: { lg: '150px', xl: '150px' }, mb: '80px' }}>
                 {testpreps.map((test, i) => (
                     <Grid container sx={{ mt: '4px', mb: '4px' }}>
                         {mobile ?
                             <>
                                 <Grid item xl={6} lg={6} sm={12} md={12} xs={12}>
+                                    <Typography className="headings">
+                                        {test.head}
+                                    </Typography>
                                     <Box
                                         sx={{ mt: '10px', mb: '10px' }}
                                     >
@@ -38,9 +41,6 @@ const TestPreparation = () => {
                                     </Box>
                                 </Grid>
                                 <Grid item xl={6} lg={6} sm={12} md={12} xs={12}>
-                                    <Typography className="headings">
-                                        {test.head}
-                                    </Typography>
                                     <Typography>
                                         {test.content}
                                     </Typography>
@@ -48,20 +48,22 @@ const TestPreparation = () => {
                                         {test.subhead1}
                                     </Typography>
                                     {/* <div className="verticle"></div> */}
-                                    {test.content_subhead_one.map((des) => (
-                                        <Typography>
-                                            <li>{des}</li>
-                                        </Typography>
-                                    ))}
+                                    <ul className="list">
+                                        {test.content_subhead_one.map((des) => (
+                                            <li>
+                                                {des}
+                                            </li>
+                                        ))}
+                                    </ul>
                                     <Typography className="subheadings">
                                         {test.subhead2}
                                     </Typography>
                                     {/* <div className="verticle"></div> */}
-                                    {test.content_subhead_two.map((des) => (
-                                        <Typography>
+                                    <ul className="list">
+                                        {test.content_subhead_two.map((des) => (
                                             <li>{des}</li>
-                                        </Typography>
-                                    ))}
+                                        ))}
+                                    </ul>
                                 </Grid>
                             </>
                             :
@@ -78,20 +80,22 @@ const TestPreparation = () => {
                                             {test.subhead1}
                                         </Typography>
                                         {/* <div className="verticle"></div> */}
-                                        {test.content_subhead_one.map((des) => (
-                                            <Typography>
-                                                <li> {des}</li>
-                                            </Typography>
-                                        ))}
+                                        <ul className="list">
+                                            {test.content_subhead_one.map((des) => (
+                                                <li>
+                                                    {des}
+                                                </li>
+                                            ))}
+                                        </ul>
                                         <Typography className="subheadings">
                                             {test.subhead2}
                                         </Typography>
                                         {/* <div className="verticle"></div> */}
-                                        {test.content_subhead_two.map((des) => (
-                                            <Typography>
-                                                <li> {des}</li>
-                                            </Typography>
-                                        ))}
+                                        <ul className="list">
+                                            {test.content_subhead_two.map((des) => (
+                                                <li>{des}</li>
+                                            ))}
+                                        </ul>
                                     </Grid>
                                     <Grid item xl={6} lg={6}>
                                         <Box
@@ -129,20 +133,22 @@ const TestPreparation = () => {
                                             {test.subhead1}
                                         </Typography>
                                         {/* <div className="verticle"></div> */}
-                                        {test.content_subhead_one.map((des) => (
-                                            <Typography>
-                                                <li>{des}</li>
-                                            </Typography>
-                                        ))}
+                                        <ul className="list">
+                                            {test.content_subhead_one.map((des) => (
+                                                <li>
+                                                    {des}
+                                                </li>
+                                            ))}
+                                        </ul>
                                         <Typography className="subheadings">
                                             {test.subhead2}
                                         </Typography>
                                         {/* <div className="verticle"></div> */}
-                                        {test.content_subhead_two.map((des) => (
-                                            <Typography>
+                                        <ul className="list">
+                                            {test.content_subhead_two.map((des) => (
                                                 <li>{des}</li>
-                                            </Typography>
-                                        ))}
+                                            ))}
+                                        </ul>
                                     </Grid>
                                 </>
                         }
@@ -188,7 +194,7 @@ const testpreps = [
         alt: 'gre'
     },
     {
-        head: 'ILETS',
+        head: 'IELTS',
         content: 'The International English Language Testing System or IELTS as it is more popularly known is the world’s most favored English Language Proficiency test for further education and migration to a foreign country where English is the dominant language.',
         subhead1: 'Reasons to give ILETS',
         content_subhead_one: ['Trusted by many educational institutions, employers, governments and professional bodies as the preferred English proficiency examination for aspiring students, professionals and migration applicants.'],

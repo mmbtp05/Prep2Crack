@@ -139,7 +139,8 @@ const Layout = () => {
                             <img
                                 src={prep2crack}
                                 alt="prep2crack"
-                                style={{ width: '250px', height: '50px', paddingRight: '50px' }}
+                                style={{ width: '250px', height: '50px', paddingRight: '50px', cursor: 'pointer' }}
+                                onClick={() => navigation("/")}
                             />
                         </li>
                         <li>
@@ -215,13 +216,15 @@ const Layout = () => {
                             <img
                                 src={prep2crack}
                                 alt="prep2crack"
-                                style={{ width: '250px', height: '50px', paddingRight: '50px' }}
+                                style={{ width: '250px', height: '50px', paddingRight: '50px', cursor: 'pointer' }}
+                                onClick={() => navigation("/")}
                             />
                             :
                             <img
                                 src={prep2crack}
                                 alt="prep2crack"
-                                style={{ width: '150px', height: '20px', paddingRight: '50px' }}
+                                style={{ width: '150px', height: '20px', paddingRight: '50px', cursor: 'pointer' }}
+                                onClick={() => navigation("/")}
                             />
                         }
                     </Grid>

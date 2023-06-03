@@ -20,12 +20,12 @@ const StudyDestination = () => {
     return (
 
         <>
-            <Container maxWidth="xl" className='aboutcontainer'>
+            <Container maxWidth="xl" className='studycontainer'>
                 {!mobile ?
                     <>
                         <Grid container>
                             <Grid item lg={6} xl={6} sx={{ p: { lg: '55px', xl: '55px', md: '55px' } }}>
-                                <Typography className='study' sx={{ pt: '130px', pl: '150px' }}>
+                                <Typography className='study' sx={{ pt: '150px' }}>
                                     Study Destination
                                 </Typography>
                             </Grid>
@@ -33,7 +33,7 @@ const StudyDestination = () => {
                                 <img
                                     src={Study}
                                     alt="study"
-                                    style={{ width: '300px', height: '250px' }}
+                                    style={{ width: '400px', height: '300px' }}
                                 />
                             </Grid>
                         </Grid>
@@ -41,7 +41,7 @@ const StudyDestination = () => {
                     :
                     <>
                         <Grid container>
-                            <Grid item lg={6} xl={6} sx={12} xs={12} md={12}>
+                            <Grid item lg={6} xl={6} sx={12} xs={12} md={12} style={{ display: 'flex', justifyContent: 'center' }}>
                                 <img
                                     src={Study}
                                     alt="study"
@@ -50,7 +50,7 @@ const StudyDestination = () => {
                             </Grid>
                             <Grid item lg={6} xl={6} sx={12} xs={12} md={12}>
                                 <Typography className='study'>
-                                     Study Destination
+                                    Study Destination
                                 </Typography>
                             </Grid>
                         </Grid>
@@ -63,6 +63,9 @@ const StudyDestination = () => {
                         {mobile ?
                             <>
                                 <Grid item xl={6} lg={6} sm={12} md={12} xs={12}>
+                                    <Typography className="headings" sx={{ mt: '20px' }}>
+                                        {destination.head}
+                                    </Typography>
                                     <Box
                                         sx={{ mt: '10px', mb: '10px' }}
                                     >
@@ -74,9 +77,6 @@ const StudyDestination = () => {
                                     </Box>
                                 </Grid>
                                 <Grid item xl={6} lg={6} sm={12} md={12} xs={12}>
-                                    <Typography className="headings">
-                                        {destination.head}
-                                    </Typography>
                                     <Typography>
                                         {destination.content}
                                     </Typography>
@@ -84,20 +84,22 @@ const StudyDestination = () => {
                                         {destination.subhead1}
                                     </Typography>
                                     {/* <div className="verticle"></div> */}
-                                    {destination.content_subhead_one.map((des) => (
-                                        <Typography>
-                                            <li>{des}</li>
-                                        </Typography>
-                                    ))}
+                                    <ul className="list">
+                                        {destination.content_subhead_one.map((des) => (
+                                            <li>
+                                                {des}
+                                            </li>
+                                        ))}
+                                    </ul>
                                     <Typography className="subheadings">
                                         {destination.subhead2}
                                     </Typography>
                                     {/* <div className="verticle"></div> */}
-                                    {destination.content_subhead_two.map((des) => (
-                                        <Typography>
+                                    <ul className="list">
+                                        {destination.content_subhead_two.map((des) => (
                                             <li>{des}</li>
-                                        </Typography>
-                                    ))}
+                                        ))}
+                                    </ul>
                                 </Grid>
                             </>
                             :
@@ -114,20 +116,22 @@ const StudyDestination = () => {
                                             {destination.subhead1}
                                         </Typography>
                                         {/* <div className="verticle"></div> */}
-                                        {destination.content_subhead_one.map((des) => (
-                                            <Typography>
-                                                <li> {des}</li>
-                                            </Typography>
-                                        ))}
+                                        <ul className="list">
+                                            {destination.content_subhead_one.map((des) => (
+                                                <li>
+                                                    {des}
+                                                </li>
+                                            ))}
+                                        </ul>
                                         <Typography className="subheadings">
                                             {destination.subhead2}
                                         </Typography>
                                         {/* <div className="verticle"></div> */}
-                                        {destination.content_subhead_two.map((des) => (
-                                            <Typography>
-                                                <li> {des}</li>
-                                            </Typography>
-                                        ))}
+                                        <ul className="list">
+                                            {destination.content_subhead_two.map((des) => (
+                                                <li>{des}</li>
+                                            ))}
+                                        </ul>
                                     </Grid>
                                     <Grid item xl={6} lg={6}>
                                         <Box
@@ -165,20 +169,22 @@ const StudyDestination = () => {
                                             {destination.subhead1}
                                         </Typography>
                                         {/* <div className="verticle"></div> */}
-                                        {destination.content_subhead_one.map((des) => (
-                                            <Typography>
-                                                <li>{des}</li>
-                                            </Typography>
-                                        ))}
+                                        <ul className="list">
+                                            {destination.content_subhead_one.map((des) => (
+                                                <li>
+                                                    {des}
+                                                </li>
+                                            ))}
+                                        </ul>
                                         <Typography className="subheadings">
                                             {destination.subhead2}
                                         </Typography>
                                         {/* <div className="verticle"></div> */}
-                                        {destination.content_subhead_two.map((des) => (
-                                            <Typography>
+                                        <ul className="list">
+                                            {destination.content_subhead_two.map((des) => (
                                                 <li>{des}</li>
-                                            </Typography>
-                                        ))}
+                                            ))}
+                                        </ul>
                                     </Grid>
                                 </>
                         }

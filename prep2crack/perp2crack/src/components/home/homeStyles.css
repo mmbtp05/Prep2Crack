@@ -52,6 +52,7 @@
     border-radius: 20px;
     background-color: #E2F0FF;
     min-height: 450px;
+    cursor: pointer;
 }
 
 .cardcontainer {
@@ -95,7 +96,7 @@
     border-radius: 10px;
     background-color: #B6D8FE ;
     margin-top: 20px;
-    width: 70%;
+    min-width: 70%;
 }
 
 .whybutton {

@@ -23,7 +23,7 @@ import Loading from '../Loading/Loading';
 import Number from '../numberAnimation/number';
 import { useInView } from 'react-intersection-observer';
 import home from '../../assets/Home page (1).png'
-
+import { CardActionArea } from '@mui/material';
 
 
 const Home = () => {
@@ -90,7 +90,7 @@ const Home = () => {
                                 <img
                                     src={home}
                                     alt="home"
-                                    style={{ width: '400px', height: '300px' }}
+                                    style={{ width: '600px', height: '400px' }}
                                 />
                             </Grid>
                         </>
@@ -128,32 +128,34 @@ const Home = () => {
                             {service.map((s, i) => (
                                 <Grid item xl={4} lg={4} md={12} sm={12} xs={12} className="cardcontainer" sx={{ p: '50px' }}>
                                     <Card sx={{ maxWidth: 345 }} className="card">
-                                        <CardContent>
-                                            <Box
-                                                style={{
-                                                    display: 'flex',
-                                                    justifyContent: 'center',
-                                                }}
-                                                sx={{
-                                                    p: '20px'
-                                                }}
-                                            >
-                                                <img
-                                                    src={s.img}
-                                                    alt={s.alt}
-                                                    className='imgservices'
-                                                />
-                                            </Box>
-                                            <Typography className="cardhead">
-                                                {s.head}
-                                            </Typography>
-                                            <Typography className="cardsubhead">
-                                                {s.subhead}
-                                            </Typography>
-                                            <Typography variant="body2" color="text.secondary">
-                                                {s.content}
-                                            </Typography>
-                                        </CardContent>
+                                        <CardActionArea>
+                                            <CardContent>
+                                                <Box
+                                                    style={{
+                                                        display: 'flex',
+                                                        justifyContent: 'center',
+                                                    }}
+                                                    sx={{
+                                                        p: '20px'
+                                                    }}
+                                                >
+                                                    <img
+                                                        src={s.img}
+                                                        alt={s.alt}
+                                                        className='imgservices'
+                                                    />
+                                                </Box>
+                                                <Typography className="cardhead">
+                                                    {s.head}
+                                                </Typography>
+                                                <Typography className="cardsubhead">
+                                                    {s.subhead}
+                                                </Typography>
+                                                <Typography variant="body2" color="text.secondary">
+                                                    {s.content}
+                                                </Typography>
+                                            </CardContent>
+                                        </CardActionArea>
                                     </Card>
                                 </Grid>
                             ))}
@@ -163,7 +165,7 @@ const Home = () => {
                         <>
                             {service.map((s, i) => (
                                 <Grid item xl={4} lg={4} md={12} sm={12} xs={12} className="cardcontainer" sx={{ p: '50px' }}>
-                                    <Card sx={{ maxWidth: 345 }} className="card">
+                                    <Card sx={{ maxWidth: 345 }} className="card" onClick={() => navigation(s.link)}>
                                         <CardContent>
                                             <Box
                                                 style={{
@@ -204,7 +206,7 @@ const Home = () => {
                             <img
                                 src={whyp2c}
                                 alt="whyprep2crack"
-                                style={{ width: '250px', height: '300px' }}
+                                style={{ width: '300px', height: '300px' }}
                             />
                             :
                             <img
@@ -366,6 +368,7 @@ const service = [
         subhead: 'Preperation',
         img: testprep,
         alt: 'test-prep',
+        link: '/testprep',
         content: 'We will help you ACE any standardized test that is required during your Study Abroad journey, whether it be SAT, GRE, GMAT, IELTS, TOEFL or PTE. Our certified trainers, time tested strategies, real time practice tests and regular performance analysis will get you test ready in no time.',
     },
     {
@@ -373,6 +376,7 @@ const service = [
         subhead: 'Counselling',
         img: admcounsel,
         alt: 'application-counsel',
+        link: '/admissioncounselling',
         content: 'Get assisted throughout your application journey by our team of skilled mentors. Our mentors will help you in each step  of Building your profile, Shortlisting of colleges, Filling your application, Editing your SOPs, LORs & Resume, Preparing for VISA Interview, Counselling before departure.'
     },
     {
@@ -380,6 +384,7 @@ const service = [
         subhead: 'Guidance',
         img: careerguide,
         alt: 'career-guide',
+        link: '/careerguidance',
         content: 'Career counselling helps you understand yourself better by identifying your strengths and interests and exploring various career options. Career counsellors work on your profile from as early as 9th grade by preparing a customized roadmap for you. Experts and mentors provide relevant resources and updated information needed to develop your career and lead you on the path of professional success.',
     },
 ]

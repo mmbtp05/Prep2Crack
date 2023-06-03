@@ -15,7 +15,7 @@ const AdmissionCounselling = () => {
     return (
 
         <>
-            <Container maxWidth="xl" sx={{ mt: { md: '0px', lg: '150px' } }}>
+            <Container maxWidth="xl" sx={{ mt: { md: '0px', lg: '150px' } , mb:'50px' }}>
                 <Grid container>
                     <Grid item lg={6} xl={6} sm={12} xs={12} md={12} sx={{ p: { lg: '50px', xl: '50px' } }} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <img
@@ -25,7 +25,7 @@ const AdmissionCounselling = () => {
                         />
                     </Grid>
                     <Grid item lg={6} xl={6} sm={12} xs={12} md={12} sx={{ p: { lg: '50px', xl: '50px' } }}>
-                        <Typography className="heading">
+                        <Typography className="heading" sx={{pt: '30px'}}>
                             ADMISSION COUNSELLING
                         </Typography>
                         <Typography>

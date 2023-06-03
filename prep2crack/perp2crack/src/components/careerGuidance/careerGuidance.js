@@ -12,7 +12,7 @@ const CareerGuidance = () => {
 
     return (
         <>
-            <Container maxWidth="xl" sx={{ mt: { md: '0px', lg: '150px' } }}>
+            <Container maxWidth="xl" sx={{ mt: { md: '0px', lg: '150px' } , mb: '30px'}}>
                 <Grid container>
                     <Grid item lg={6} xl={6} sm={12} xs={12} md={12} sx={{ p: { lg: '50px', xl: '50px' } }} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <img

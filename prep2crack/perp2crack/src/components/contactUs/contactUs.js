@@ -3,6 +3,7 @@ import { Container, Grid, TextField, Button, useMediaQuery, useTheme } from '@mu
 import ContactUss from '../../assets/Contact-us.png'
 import MenuItem from '@mui/material/MenuItem';
 import axios from '../../axios'
+import CircularProgress from '@mui/material/CircularProgress';
 
 const ContactUs = () => {
 
@@ -18,6 +19,7 @@ const ContactUs = () => {
     const [errorSubject, setErrorSubject] = useState(false);
     const [errorNumber, setErrorNumber] = useState(false);
 
+    const [submitted, setSubmitted] = useState(true);
 
     useEffect(() => {
         window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
@@ -66,6 +68,7 @@ const ContactUs = () => {
 
 
     const handleSubmit = (name, email, subject, message, number) => {
+        setSubmitted(false)
         axios.post(`form/`, {
             name: name,
             email: email,
@@ -73,6 +76,7 @@ const ContactUs = () => {
             message: message.length === 0 ? "NO MESSAGE" : message,
             phone_no: number
         }).then((res) => {
+            setSubmitted(true)
             setErrorEmail(false)
             setErrorName(false)
             setErrorNumber(false)
@@ -99,11 +103,17 @@ const ContactUs = () => {
             } else {
                 setErrorSubject(false)
             }
+            if (error.response.data.phone_no.phone_no) {
+                setErrorNumber(true)
+            } else {
+                setErrorNumber(false)
+            }
             if (error.response.data.phone_no) {
                 setErrorNumber(true)
             } else {
                 setErrorNumber(false)
             }
+            setSubmitted(true)
         })
     }
 
@@ -120,7 +130,7 @@ const ContactUs = () => {
                             <img
                                 src={ContactUss}
                                 alt="contact-us"
-                                style={{ width: '250px', height: '300px' }}
+                                style={{ width: '340px', height: '320px' }}
                             />
                             :
                             <img
@@ -198,19 +208,35 @@ const ContactUs = () => {
                             rows={4}
                             sx={{ mt: '20px', mb: '20px' }}
                         />
-                        <Button
-                            variant="container"
-                            style={{
-                                backgroundColor: 'darkblue',
-                                color: 'white',
-                                borderRadius: '20px',
-                                fontFamily: 'system-ui',
-                                fontWeight: 'bold'
-                            }}
-                            onClick={() => handleSubmit(name, email, subject, message, number)}
-                        >
-                            Submit
-                        </Button>
+                        {submitted ?
+                            <Button
+                                variant="container"
+                                style={{
+                                    backgroundColor: 'darkblue',
+                                    color: 'white',
+                                    borderRadius: '20px',
+                                    fontFamily: 'system-ui',
+                                    fontWeight: 'bold'
+                                }}
+                                onClick={() => handleSubmit(name, email, subject, message, number)}
+                            >
+                                Submit
+                            </Button>
+                            :
+                            <Button
+                                variant="container"
+                                style={{
+                                    backgroundColor: 'darkblue',
+                                    color: 'white',
+                                    borderRadius: '20px',
+                                    fontFamily: 'system-ui',
+                                    fontWeight: 'bold'
+                                }}
+                                onClick={() => handleSubmit(name, email, subject, message, number)}
+                            >
+                                <CircularProgress size="30px"/>
+                            </Button>
+                        }
                     </Grid>
                 </Grid>
             </Container>
