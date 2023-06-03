@@ -196,7 +196,7 @@ const testpreps = [
     {
         head: 'IELTS',
         content: 'The International English Language Testing System or IELTS as it is more popularly known is the world’s most favored English Language Proficiency test for further education and migration to a foreign country where English is the dominant language.',
-        subhead1: 'Reasons to give ILETS',
+        subhead1: 'Reasons to give IELTS',
         content_subhead_one: ['Trusted by many educational institutions, employers, governments and professional bodies as the preferred English proficiency examination for aspiring students, professionals and migration applicants.'],
         subhead2: 'Why Prep2Crack',
         content_subhead_two: ['Customized tutoring', 'Personalized attention', 'Certified trainers', 'Time-tested strategies'],

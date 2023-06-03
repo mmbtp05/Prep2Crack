@@ -127,7 +127,7 @@ const Home = () => {
                         >
                             {service.map((s, i) => (
                                 <Grid item xl={4} lg={4} md={12} sm={12} xs={12} className="cardcontainer" sx={{ p: '50px' }}>
-                                    <Card sx={{ maxWidth: 345 }} className="card">
+                                    <Card sx={{ maxWidth: 345 }} className="card" onClick={() => navigation(s.link)}>
                                         <CardActionArea>
                                             <CardContent>
                                                 <Box
