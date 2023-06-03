@@ -1,13 +1,11 @@
 import * as React from 'react';
-import { useState } from 'react';
 import { useSpring, animated } from '@react-spring/web'
 
 
 function Number({ data }) {
-    const [flip, set] = useState(false)
     const { number } = useSpring({
       reset: true,
-      reverse: flip,
+      reverse: false,
       from: { number: 0 },
       number: parseInt(`${data}`),
       delay: 500,

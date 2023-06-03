@@ -18,11 +18,17 @@ const Carousel = (props) => {
         if (currentIndex < (length - show)) {
             setCurrentIndex(prevState => prevState + 1)
         }
+        if(currentIndex === length - show){
+            setCurrentIndex(0)
+        }
     }
 
     const prev = () => {
         if (currentIndex > 0) {
             setCurrentIndex(prevState => prevState - 1)
+        }
+        if(currentIndex === 0){
+            setCurrentIndex(length-show)
         }
     }
 
@@ -57,7 +63,7 @@ const Carousel = (props) => {
             <div className="carousel-wrapper">
                 {/* You can alwas change the content of the button to other things */}
                 {
-                    currentIndex > 0 &&
+                    // currentIndex > 0 &&
                     <button onClick={prev} className="left-arrow">
                         &lt;
                     </button>
@@ -76,7 +82,7 @@ const Carousel = (props) => {
                 </div>
                 {/* You can alwas change the content of the button to other things */}
                 {
-                    currentIndex < (length - show) &&
+                    // currentIndex < (length - show) &&
                     <button onClick={next} className="right-arrow">
                         &gt;
                     </button>

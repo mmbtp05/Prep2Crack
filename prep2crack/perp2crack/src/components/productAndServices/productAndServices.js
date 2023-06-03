@@ -6,6 +6,7 @@ import testprep from '../../assets/testprep.jpg'
 import careerguidance from '../../assets/careerguidance.jpg'
 import admissioncounselling from '../../assets/admissioncounselling.jpg'
 import { useTheme } from '@mui/material'
+import Services from '../../assets/Services (1).png'
 import { useNavigate } from 'react-router-dom'
 
 const ProductAndService = () => {
@@ -22,19 +23,53 @@ const ProductAndService = () => {
 
         <>
             <Container maxWidth="xl" className='panddcontainer'>
-                <Typography className='pandd'>
-                    Product and Services
-                </Typography>
-                <Typography className='panddcontent'>
-                    We will be here for you every step of the way.
-                    <br></br>
-                    Our education consultants will work with you and your family to plan the next step on your educational journey.
-                </Typography>
+                <Grid container>
+                    {!mobile ?
+                        <>
+                            <Grid item lg={6} xl={6} sm={12} xs={12} md={12} sx={{ p: { lg: '55px', xl: '5px', md: '55px' } }}>
+                                <Typography className='pandd' sx={{pt: '100px'}}>
+                                    Product and Services
+                                </Typography>
+                                <Typography className='panddcontent'>
+                                    We will be here for you every step of the way.
+                                    <br></br>
+                                    Our education consultants will work with you and your family to plan the next step on your educational journey.
+                                </Typography>
+                            </Grid>
+                            <Grid item lg={6} xl={6} sm={12} xs={12} md={12} sx={{ p: { lg: '80px', xl: '80px', md: '80px' } }}>
+                                <img
+                                    src={Services}
+                                    alt="services"
+                                    style={{ width: '300px', height: '250px' }}
+                                />
+                            </Grid>
+                        </>
+                        :
+                        <>
+                            <Grid item lg={6} xl={6} sm={12} xs={12} md={12}>
+                                <img
+                                    src={Services}
+                                    alt="services"
+                                    style={{ width: '300px', height: '250px' }}
+                                />
+                            </Grid>
+                            <Grid item lg={6} xl={6} sm={12} xs={12} md={12}>
+                                <Typography className='pandd'>
+                                    Product and Services
+                                </Typography>
+                                <Typography className='panddcontent'>
+                                    We will be here for you every step of the way.
+                                    <br></br>
+                                    Our education consultants will work with you and your family to plan the next step on your educational journey.
+                                </Typography>
+                            </Grid>
+                        </>
+                    }
+                </Grid>
             </Container>
             {services.map((service, i) => (
-                <Container maxWidth="xl" sx={{ mt: '50px', mb: '80px' }}>
+                <Container maxWidth="xl" sx={{ mt: { lg: '50px', xl: '50px' }, mb: { lg: '80px', xl: '80px' } }}>
                     <Grid container sx={{ p: '30px' }}>
-
                         {mobile ?
                             <>
                                 <Grid item lg={6} xl={6} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>

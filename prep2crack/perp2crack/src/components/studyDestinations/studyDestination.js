@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Box, Container, Grid, Typography, useTheme } from '@mui/material'
 import { useMediaQuery } from "@mui/material";
-import Study from '../../assets/study_des_head.jpg'
+import Study from '../../assets/study_des_head.png'
 import './studyDestinationStyles.css'
 import Usa from '../../assets/USA.jpg'
 import Uk from '../../assets/UK.jpg'
@@ -20,21 +20,51 @@ const StudyDestination = () => {
     return (
 
         <>
-            <Container maxWidth="xl" className="headcontainer">
-                <img
-                    src={Study}
-                    className="studyhead"
-                    alt="destinations"
-                />
+            <Container maxWidth="xl" className='aboutcontainer'>
+                {!mobile ?
+                    <>
+                        <Grid container>
+                            <Grid item lg={6} xl={6} sx={{ p: { lg: '55px', xl: '55px', md: '55px' } }}>
+                                <Typography className='study' sx={{ pt: '130px', pl: '150px' }}>
+                                    Study Destination
+                                </Typography>
+                            </Grid>
+                            <Grid item lg={6} xl={6} sx={{ p: { lg: '80px', xl: '55px', md: '55px' } }}>
+                                <img
+                                    src={Study}
+                                    alt="study"
+                                    style={{ width: '300px', height: '250px' }}
+                                />
+                            </Grid>
+                        </Grid>
+                    </>
+                    :
+                    <>
+                        <Grid container>
+                            <Grid item lg={6} xl={6} sx={12} xs={12} md={12}>
+                                <img
+                                    src={Study}
+                                    alt="study"
+                                    style={{ width: '300px', height: '250px' }}
+                                />
+                            </Grid>
+                            <Grid item lg={6} xl={6} sx={12} xs={12} md={12}>
+                                <Typography className='study'>
+                                     Study Destination
+                                </Typography>
+                            </Grid>
+                        </Grid>
+                    </>
+                }
             </Container>
-            <Container maxWidth="xl" sx={{ mt: '60px' , mb: '80px'}}>
+            <Container maxWidth="xl" sx={{ mt: '60px', mb: '80px' }}>
                 {destinations.map((destination, i) => (
                     <Grid container sx={{ mt: '4px', mb: '4px' }}>
                         {mobile ?
                             <>
                                 <Grid item xl={6} lg={6} sm={12} md={12} xs={12}>
                                     <Box
-                                        sx={{mt: '10px' , mb: '10px'}}
+                                        sx={{ mt: '10px', mb: '10px' }}
                                     >
                                         <img
                                             src={destination.image}

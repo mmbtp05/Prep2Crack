@@ -6,6 +6,9 @@ import { useEffect } from 'react'
 import shubham from '../../assets/shubham.jpg'
 import manish from '../../assets/manishjain.jpg'
 import anshul from '../../assets/anshulsaini.jpeg'
+import about from '../../assets/About us (1).png'
+import { useTheme } from '@mui/material';
+import { useMediaQuery } from '@mui/material'
 
 const AboutUs = () => {
 
@@ -13,11 +16,51 @@ const AboutUs = () => {
         window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
     }, [])
 
+    const theme = useTheme();
+    const mobile = useMediaQuery(theme.breakpoints.down("md"));
+
 
     return (
 
         <>
-            <Container maxWidth="xl" sx={{ mt: '200px' }}>
+            <Container maxWidth="xl" className='aboutcontainer'>
+                {!mobile ?
+                    <>
+                        <Grid container>
+                            <Grid item lg={6} xl={6} sx={{ p: { lg: '55px', xl: '55px', md: '55px' } }}>
+                                <Typography className='about' sx={{ pt: '130px', pl: '150px' }}>
+                                    About Us
+                                </Typography>
+                            </Grid>
+                            <Grid item lg={6} xl={6} sx={{ p: { lg: '80px', xl: '55px', md: '55px' } }}>
+                                <img
+                                    src={about}
+                                    alt="about-us"
+                                    style={{ width: '300px', height: '250px' }}
+                                />
+                            </Grid>
+                        </Grid>
+                    </>
+                    :
+                    <>
+                        <Grid container>
+                            <Grid item lg={6} xl={6} sx={12} xs={12} md={12}>
+                                <img
+                                    src={about}
+                                    alt="about-us"
+                                    style={{ width: '300px', height: '250px' }}
+                                />
+                            </Grid>
+                            <Grid item lg={6} xl={6} sx={12} xs={12} md={12}>
+                                <Typography className='about'>
+                                    About Us
+                                </Typography>
+                            </Grid>
+                        </Grid>
+                    </>
+                }
+            </Container>
+            <Container maxWidth="xl" sx={{ mt: { lg: '150px', xl: '150px', sm: '150px' } }}>
                 <Grid container>
                     <Grid item xl={6.5} lg={6.5} md={12} sm={12} xs={12} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <img
@@ -39,14 +82,13 @@ const AboutUs = () => {
                     </Grid>
                 </Grid>
             </Container>
-            <Container maxWidth="lg" sx={{ mt: '50px', mb:'80px' }}>
+            <Container maxWidth="lg" sx={{ mt: '50px', mb: '80px' }}>
                 <Card className='card' sx={{ p: '50px' }}>
                     <Typography className='teamheading'>
                         Meet our amazing team.
                     </Typography>
-
                     <Grid container sx={{ pt: '50px' }}>
-                        <Grid item lg={4} xl={4} sm={12} xs={12} md={12}>
+                        <Grid item lg={4} xl={4} sm={12} xs={12} md={12} sx={{ pb: '30px' }}>
                             <Box
                                 style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
                             >
@@ -64,7 +106,7 @@ const AboutUs = () => {
                                 Founder, Mathemtician, Athelete
                             </Typography>
                         </Grid>
-                        <Grid item lg={4} xl={4} sm={12} xs={12} md={12}>
+                        <Grid item lg={4} xl={4} sm={12} xs={12} md={12} sx={{ pb: '30px' }}>
                             <Box
                                 style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
                             >
@@ -79,10 +121,10 @@ const AboutUs = () => {
                                 Anshul Saini
                             </Typography>
                             <Typography className='teamcontent'>
-                                Verbal Trainer. Eloquent.
+                                Verbal Trainer, Eloquent
                             </Typography>
                         </Grid>
-                        <Grid item lg={4} xl={4} sm={12} xs={12} md={12}>
+                        <Grid item lg={4} xl={4} sm={12} xs={12} md={12} sx={{ pb: '30px' }}>
                             <Box
                                 style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
                             >
@@ -97,7 +139,7 @@ const AboutUs = () => {
                                 Manish Jain
                             </Typography>
                             <Typography className='teamcontent'>
-                                CMO. Cogent. Hodophile
+                                CMO, Cogent, Hodophile
                             </Typography>
                         </Grid>
                     </Grid>

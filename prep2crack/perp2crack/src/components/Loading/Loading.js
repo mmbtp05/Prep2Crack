@@ -8,7 +8,7 @@ const StyledLoading = styled('div')(() => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: '80px',
+    marginTop: '120px',
     marginBottom: '80px',
     '& img': {
         width: 'auto',

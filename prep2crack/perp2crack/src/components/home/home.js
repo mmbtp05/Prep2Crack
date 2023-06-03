@@ -9,7 +9,7 @@ import CardContent from '@mui/material/CardContent';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import Stack from '@mui/material/Stack';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState, useRef , useMemo} from 'react';
+import { useEffect, useState } from 'react';
 import whyp2c from '../../assets/whyprep2crack.jpg'
 import { useTheme } from '@mui/material';
 // import Carousel from '../../carousal/carousal';
@@ -20,8 +20,9 @@ import admcounsel from '../../assets/Admission Counselling - Home Page.png'
 import careerguide from '../../assets/Career Guidance - Home Page.png'
 import Carousel from '../../carousal/carousal';
 import Loading from '../Loading/Loading';
-import anshul from '../../assets/anshulsaini.jpeg'
 import Number from '../numberAnimation/number';
+import { useInView } from 'react-intersection-observer';
+import home from '../../assets/Home page (1).png'
 
 
 
@@ -36,9 +37,10 @@ const Home = () => {
     const data_testimonials = useSelector(state => state.homeStuff.testimonials);
     const [loadingAchievement, setLoadingAchievement] = useState(true);
     const [loadingTestimonials, setLoadingTestimonials] = useState(true);
-    const reference = useRef(null);
-    const isVisible = useIntersection(reference,'0px');
     const navigation = useNavigate();
+
+    const { ref: reference, inView: refVisible } = useInView();
+
 
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'auto', left: 0 })
@@ -68,28 +70,57 @@ const Home = () => {
 
         // achievements && testimonials &&
         <>
-            <Container maxWidth="xl" className='maincontainer'>
+            <Container maxWidth="xl" className={!mobile ? 'maincontainer1' : 'maincontainer2'}>
                 <Grid container>
-                    <Grid item xl={5} lg={5} md={12} sm={12} xs={12} className="herocontentleft" sx={{ pl: '70px', pt: '150px' }}>
-                        <Typography className='upperhead'>
-                            One Step Solution For
-                        </Typography>
-                        <Typography variant='h2' className='mainhead'>
-                            Study Abroad Aspirants
-                        </Typography>
-                        <Typography className="lowerhead">
-                            Helping students achieve their study abroad dream.
-                        </Typography>
-                        <Button variant="contained" className='button' onClick={() => navigation('./contact')} sx={{ mt: '50px' }} disableElevation>Enroll Now</Button>
-                    </Grid>
-                    <Grid item xl={7} lg={7} md={12} sm={12} xs={12}>
-
-                    </Grid>
+                    {!mobile ?
+                        <>
+                            <Grid item xl={5} lg={5} md={12} sm={12} xs={12} className="herocontentleft" sx={{ pl: '70px', pt: '150px' }}>
+                                <Typography className='upperhead'>
+                                    One Step Solution For
+                                </Typography>
+                                <Typography variant='h2' className='mainhead'>
+                                    Study Abroad Aspirants
+                                </Typography>
+                                <Typography className="lowerhead">
+                                    Helping students achieve their study abroad dream.
+                                </Typography>
+                                <Button variant="contained" className='button' onClick={() => navigation('./contact')} sx={{ mt: '50px' }} disableElevation>Enroll Now</Button>
+                            </Grid>
+                            <Grid item xl={7} lg={7} md={12} sm={12} xs={12} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '100px' }}>
+                                <img
+                                    src={home}
+                                    alt="home"
+                                    style={{ width: '400px', height: '300px' }}
+                                />
+                            </Grid>
+                        </>
+                        :
+                        <>
+                            <Grid item xl={7} lg={7} md={12} sm={12} xs={12} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                <img
+                                    src={home}
+                                    alt="home"
+                                    style={{ width: '400px', height: '300px' }}
+                                />
+                            </Grid>
+                            <Grid item xl={5} lg={5} md={12} sm={12} xs={12} className="herocontentleft" sx={{ pl: '20px', pt: '0px' }}>
+                                <Typography className='upperhead'>
+                                    One Step Solution For
+                                </Typography>
+                                <Typography variant='h2' className='mainhead'>
+                                    Study Abroad Aspirants
+                                </Typography>
+                                <Typography className="lowerhead">
+                                    Helping students achieve their study abroad dream.
+                                </Typography>
+                                <Button variant="contained" className='button' onClick={() => navigation('./contact')} sx={{ mt: '50px' }} disableElevation>Enroll Now</Button>
+                            </Grid>
+                        </>
+                    }
                 </Grid>
             </Container>
             <Container maxWidth="xl">
                 <Grid container sx={{ mt: '50px', mb: '50px' }}>
-
                     {mobile ?
                         <Carousel
                             show={1}
@@ -240,7 +271,7 @@ const Home = () => {
                                         <Grid item lg={12} xl={12} sm={12} md={12} xs={12} key={i} sx={{ p: '30px' }}>
                                             <Box style={{ justifyContent: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                                                 <img
-                                                    src={anshul}
+                                                    src={testimonial.photo}
                                                     alt="testimonial"
                                                     style={{ width: '200px', height: '300px' }}
                                                 />
@@ -268,7 +299,7 @@ const Home = () => {
                                     <Grid item lg={3} xl={3} sx={{ p: '40px' }} sm={6} xs={12} md={6}>
                                         <Stack direction="row" style={{ display: 'flex', justifyContent: 'center' }}>
                                             <Typography className='figures'>
-                                                {isVisible ? <Number data={achievement.admin_recieved} /> : achievement.admin_recieved}
+                                                {refVisible ? <Number data={achievement.admin_recieved} /> : achievement.admin_recieved}
                                             </Typography>
                                             <Typography className='figures'>
                                                 +
@@ -281,7 +312,7 @@ const Home = () => {
                                     <Grid item lg={3} xl={3} sx={{ p: '40px' }} sm={6} xs={12} md={6}>
                                         <Stack direction="row" style={{ display: 'flex', justifyContent: 'center' }}>
                                             <Typography className='figures'>
-                                                <Number data={achievement.experience} />
+                                                {refVisible ? <Number data={achievement.experience} /> : achievement.experience}
                                             </Typography>
                                             <Typography className='figures'>
                                                 +
@@ -294,7 +325,7 @@ const Home = () => {
                                     <Grid item lg={3} xl={3} sx={{ p: '40px' }} sm={6} xs={12} md={6}>
                                         <Stack direction="row" style={{ display: 'flex', justifyContent: 'center' }}>
                                             <Typography className='figures'>
-                                                <Number data={achievement.test_clear} />
+                                                {refVisible ? <Number data={achievement.test_clear} /> : achievement.test_clear}
                                             </Typography>
                                             <Typography className='figures'>
                                                 +
@@ -307,7 +338,7 @@ const Home = () => {
                                     <Grid item lg={3} xl={3} sx={{ p: '40px' }} sm={6} xs={12} md={6}>
                                         <Stack direction="row" style={{ display: 'flex', justifyContent: 'center' }}>
                                             <Typography className='figures'>
-                                                <Number data={achievement.scholarship} />
+                                                {refVisible ? <Number data={achievement.scholarship} /> : achievement.scholrship}
                                             </Typography>
                                             <Typography className='figures'>
                                                 M+
@@ -353,22 +384,5 @@ const service = [
     },
 ]
 
-const useIntersection = (element, rootMargin) => {
-    const [isVisible, setState] = useState(false);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                setState(entry.isIntersecting);
-            }, { rootMargin }
-        );
-
-        element.current && observer.observe(element.current);
-
-        return () => observer.unobserve(element.current);
-    }, []);
-
-    return isVisible;
-};
 
 

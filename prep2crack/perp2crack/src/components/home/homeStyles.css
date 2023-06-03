@@ -1,8 +1,15 @@
-.maincontainer{
+.maincontainer1{
     /* background: rgb(2, 0, 36); */
     /* background: linear-gradient(180deg, rgba(2, 0, 36, 1) 0%, rgba(0, 100, 255, 1) 0%, rgba(0, 212, 255, 1) 100%); */
     background-color: #6CB4EE;
     min-height: 600px;
+}
+
+.maincontainer2{
+    /* background: rgb(2, 0, 36); */
+    /* background: linear-gradient(180deg, rgba(2, 0, 36, 1) 0%, rgba(0, 100, 255, 1) 0%, rgba(0, 212, 255, 1) 100%); */
+    background-color: #6CB4EE;
+    min-height: 800px;
 }
 
 .mainhead {
@@ -133,8 +140,8 @@
 
 .imgservices {
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
+    width: 110px;
+    height: 110px;
 }
 
 .testimonialname {

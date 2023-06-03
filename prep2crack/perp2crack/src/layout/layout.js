@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import Container from '@mui/material/Container';
 import { Link } from 'react-router-dom';
@@ -14,17 +14,18 @@ import { Typography, useMediaQuery, useTheme } from '@mui/material'
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
 import { IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import CloseIcon from '@mui/icons-material/Close';
 import { useNavigate } from 'react-router-dom';
-
-
-
-
-
+import CallIcon from '@mui/icons-material/Call';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import prep2crack from '../assets/prep2crack 2.png'
 
 
 
@@ -35,7 +36,7 @@ const Layout = () => {
 
     const navigation = useNavigate();
 
-    const [mobileOpen, setMobileOpen] = React.useState(false);
+    const [mobileOpen, setMobileOpen] = useState(false);
     function handleDrawerToggle() {
         setMobileOpen(!mobileOpen)
     }
@@ -45,42 +46,53 @@ const Layout = () => {
         navigation("/contact");
     }
 
+    const [open, setOpen] = useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+
     const drawer = (
         <div>
             <List>
 
                 <ListItem>
-                    <Link exact="true" to="/" onClick={handleDrawerToggle}>
-                        <ListItemText primary="Home"></ListItemText>
+                    <Link exact="true" to="/" onClick={handleDrawerToggle} className='moblink'>
+                        <Typography className='moblink'>Home</Typography>
                     </Link>
                 </ListItem>
 
                 <ListItem>
-                    <Link exact to="/aboutUs" onClick={handleDrawerToggle}>
-                        <ListItemText primary="About Us"></ListItemText>
+                    <Link exact to="/aboutUs" onClick={handleDrawerToggle} className='moblink'>
+                        <Typography className='moblink'>About Us</Typography>
                     </Link>
                 </ListItem>
 
                 <ListItem>
-                    <Link exact to="/productandservice" onClick={handleDrawerToggle}>
-                        <ListItemText primary="Services"></ListItemText>
+                    <Link exact to="/productandservice" onClick={handleDrawerToggle} className='moblink'>
+                        <Typography className='moblink'>Services</Typography>
                     </Link>
                 </ListItem>
 
                 <ListItem>
-                    <Link exact to="/studydestination" onClick={handleDrawerToggle}>
-                        <ListItemText primary="Study Destinations"></ListItemText>
+                    <Link exact to="/studydestination" onClick={handleDrawerToggle} className='moblink'>
+                        <Typography className='moblink'>Study Destination</Typography>
                     </Link>
                 </ListItem>
 
                 <ListItem>
-                    <Link exact to="/contact" onClick={handleDrawerToggle}>
-                        <ListItemText primary="Contact Us"></ListItemText>
+                    <Link exact to="/contact" onClick={handleDrawerToggle} className='moblink'>
+                        <Typography className='moblink'>Contact Us</Typography>
                     </Link>
                 </ListItem>
 
                 <ListItem>
-                    <Button variant="contained" className='button' onClick={() => mobileBook()}>Book a Demo</Button>
+                    <Button variant="contained" className='buttonn' onClick={() => mobileBook()}>Book a Demo</Button>
                 </ListItem>
 
 
@@ -96,26 +108,40 @@ const Layout = () => {
             {mobile ?
 
                 <>
-                    <IconButton onClick={() => handleDrawerToggle()}>
-                        <MenuIcon />
-                    </IconButton>
-                    <SwipeableDrawer
-                        open={mobileOpen}
-                        onClose={handleDrawerToggle}
-                    >
+                    <div style={{ backgroundColor: '#6CB4EE' }}>
                         <IconButton onClick={() => handleDrawerToggle()}>
-                            <CloseIcon />
+                            <MenuIcon />
                         </IconButton>
-
-                        {drawer}
-                    </SwipeableDrawer>
-
+                        <SwipeableDrawer
+                            open={mobileOpen}
+                            onClose={handleDrawerToggle}
+                        >
+                            <Stack direction="row" spacing={5}>
+                                <img
+                                    src={prep2crack}
+                                    alt="prep2crack"
+                                    style={{ width: '150px', height: '20px', paddingTop: '10px' }}
+                                />
+                                <IconButton onClick={() => handleDrawerToggle()}>
+                                    <CloseIcon />
+                                </IconButton>
+                            </Stack>
+                            {drawer}
+                        </SwipeableDrawer>
+                    </div>
                 </>
 
 
                 :
                 <nav class="stroke">
                     <ul>
+                        <li>
+                            <img
+                                src={prep2crack}
+                                alt="prep2crack"
+                                style={{ width: '250px', height: '50px', paddingRight: '50px' }}
+                            />
+                        </li>
                         <li>
                             <Link exact to="/">
                                 HOME
@@ -142,32 +168,73 @@ const Layout = () => {
                             </Link>
                         </li>
                         <li>
-                            <Button variant="contained" className='button' disableElevation onClick={() => navigation("/contact")}>Book a Demo</Button>
+                            <Button variant="contained" className='buttonnn' disableElevation onClick={() => navigation("/contact")}>Book a Demo</Button>
                         </li>
                     </ul>
                 </nav>
             }
 
-
-
-
             <Outlet />
+
+            {!mobile ?
+                <>
+                    <div className='static' onClick={() => handleClickOpen()}>
+                        <div style={{ flexDirection: 'row', display: 'flex' }}>
+                            <CallIcon />
+                            LET'S TALK
+                        </div>
+                    </div>
+                    <Dialog
+                        open={open}
+                        keepMounted
+                        onClose={handleClose}
+                    >
+                        <DialogTitle>{"Our contact info"}</DialogTitle>
+                        <DialogContent>
+                            <DialogContentText>
+                                319-B, Scheme No. 1, Arya Nagar, Alwar
+                                <br></br>
+                                Phone:- +91-7742842292
+                                <br></br>
+                                E-mail :- preptocrack@gmail.com
+                                <br></br>
+                                website :- www.prep2crack.com
+                            </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={handleClose}>close</Button>
+                        </DialogActions>
+                    </Dialog>
+                </>
+                : null}
 
             <Container style={{ backgroundColor: '#E2F0FF' }} maxWidth="xl" >
                 <Grid container className='footerupper'>
-                    <Grid item lg={6} xl={6}>
-
+                    <Grid item lg={6} xl={6} style={{ display: 'flex', justifyContent: 'left', alignItems: 'center' }} sm={6} xs={6} md={6}>
+                        {!mobile ?
+                            <img
+                                src={prep2crack}
+                                alt="prep2crack"
+                                style={{ width: '250px', height: '50px', paddingRight: '50px' }}
+                            />
+                            :
+                            <img
+                                src={prep2crack}
+                                alt="prep2crack"
+                                style={{ width: '150px', height: '20px', paddingRight: '50px' }}
+                            />
+                        }
                     </Grid>
-                    <Grid item lg={6} xl={6} style={{ display: 'flex', justifyContent: 'right', alignItems: 'center' }}>
+                    <Grid item lg={6} xl={6} style={{ display: 'flex', justifyContent: 'right', alignItems: 'center' }} sm={6} xs={6} md={6}>
                         <Stack direction="row" spacing={1}>
                             <IconButton href="https://www.facebook.com/profile.php?id=100089485518027" target="_blank" rel="noopener noreferrer">
-                                <FacebookIcon style={{color: 'black'}} />
+                                <FacebookIcon style={{ color: 'black' }} />
                             </IconButton>
                             <IconButton href="https://www.instagram.com/prep2crack_" target="_blank" rel="noopener noreferrer">
-                                <InstagramIcon style={{color: 'black'}} />
+                                <InstagramIcon style={{ color: 'black' }} />
                             </IconButton>
                             <IconButton href="https://www.linkedin.com/company/90628409/" target="_blank" rel="noopener noreferrer">
-                                <LinkedInIcon style={{color: 'black'}} />
+                                <LinkedInIcon style={{ color: 'black' }} />
                             </IconButton>
                         </Stack>
                     </Grid>
@@ -188,19 +255,19 @@ const Layout = () => {
                         </Typography>
                         <Stack direction="row" spacing={1}>
                             <FiberManualRecordIcon style={{ fontSize: '10px' }} sx={{ pt: '7px' }} />
-                            <Typography>
+                            <Typography onClick={() => navigation("/testprep")} style={{ cursor: 'pointer' }}>
                                 Test Preperation
                             </Typography>
                         </Stack>
                         <Stack direction="row" spacing={1}>
                             <FiberManualRecordIcon style={{ fontSize: '10px' }} sx={{ pt: '7px' }} />
-                            <Typography>
+                            <Typography onClick={() => navigation("/admissioncounselling")} style={{ cursor: 'pointer' }}>
                                 Application Counselling
                             </Typography>
                         </Stack>
                         <Stack direction="row" spacing={1}>
                             <FiberManualRecordIcon style={{ fontSize: '10px' }} sx={{ pt: '7px' }} />
-                            <Typography>
+                            <Typography onClick={() => navigation("/careerguidance")} style={{ cursor: 'pointer' }}>
                                 Career Guidance
                             </Typography>
                         </Stack>
@@ -254,7 +321,7 @@ const Layout = () => {
                             E-mail :-   preptocrack@gmail.com
                         </Typography>
                         <Typography>
-                            website :-  www.preptocrack.com
+                            website :-  www.prep2crack.com
                         </Typography>
                     </Grid>
                 </Grid>
@@ -269,3 +336,5 @@ const Layout = () => {
 }
 
 export default React.memo(Layout);
+
+
