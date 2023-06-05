@@ -264,7 +264,7 @@ const Home = () => {
                             Testimonials
                         </Typography>
                         <Carousel
-                            show={4}
+                            show={mobile ? 1 : 4}
                         >
                             {loadingTestimonials ? <Loading />
                                 :
@@ -334,7 +334,7 @@ const Home = () => {
                                             </Typography>
                                         </Stack>
                                         <Typography className='figuresofwhat'>
-                                            Standardized Test Cleared
+                                            Success Stories
                                         </Typography>
                                     </Grid>
                                     <Grid item lg={3} xl={3} sx={{ p: '40px' }} sm={6} xs={12} md={6}>

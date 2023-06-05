@@ -8,14 +8,14 @@ const AdmissionCounselling = () => {
 
 
     useEffect(() => {
-        window.scrollTo({top: 0, left: 0, behavior: 'auto'})
+        window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
     })
 
 
     return (
 
         <>
-            <Container maxWidth="xl" sx={{ mt: { md: '0px', lg: '150px' } , mb:'50px' }}>
+            <Container maxWidth="xl" sx={{ mt: { md: '0px', lg: '150px' }, mb: '50px' }}>
                 <Grid container>
                     <Grid item lg={6} xl={6} sm={12} xs={12} md={12} sx={{ p: { lg: '50px', xl: '50px' } }} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <img
@@ -25,7 +25,7 @@ const AdmissionCounselling = () => {
                         />
                     </Grid>
                     <Grid item lg={6} xl={6} sm={12} xs={12} md={12} sx={{ p: { lg: '50px', xl: '50px' } }}>
-                        <Typography className="heading" sx={{pt: '30px'}}>
+                        <Typography className="heading" sx={{ pt: '30px' }}>
                             ADMISSION COUNSELLING
                         </Typography>
                         <Typography>
@@ -39,27 +39,29 @@ const AdmissionCounselling = () => {
                             <br></br>
                         </Typography>
                         <div>
-                            <li>
-                                What colleges to apply to ?
-                            </li>
-                            <li>
-                                What are the deadlines ?
-                            </li>
-                            <li>
-                                What are the documents required ?
-                            </li>
-                            <li>
-                                What can be asked in the interview ?
-                            </li>
-                            <li>
-                                What can be asked in VISA interview ?
-                            </li>
-                            <li>
-                                What are the documents required for VISA application ?
-                            </li>
-                            <li>
-                                What steps to take before flying to another country ?
-                            </li>
+                            <ul style={{ listStylePosition: 'outside' }}>
+                                <li>
+                                    What colleges to apply to ?
+                                </li>
+                                <li>
+                                    What are the deadlines ?
+                                </li>
+                                <li>
+                                    What are the documents required ?
+                                </li>
+                                <li>
+                                    What can be asked in the interview ?
+                                </li>
+                                <li>
+                                    What can be asked in VISA interview ?
+                                </li>
+                                <li>
+                                    What are the documents required for VISA application ?
+                                </li>
+                                <li>
+                                    What steps to take before flying to another country ?
+                                </li>
+                            </ul>
                         </div>
                         <Typography sx={{ pt: '10px' }}>
                             The Admission Counselling services helps you through all these question or any other that comes while applying Abroad.
@@ -71,18 +73,20 @@ const AdmissionCounselling = () => {
                             Our team of experts will handhold you throughout the process of application from the initial step of profile building to the final step of getting you ready to fly. We will help you through:
                         </Typography>
                         <div>
-                            <li>
-                                Profile building
-                            </li>
-                            <li>
-                                Shortlisting of colleges
-                            </li>
-                            <li>
-                                Applying to the colleges before deadlines
-                            </li>
-                            <li>
-                                Documentation
-                            </li>
+                            <ul style={{ listStylePosition: 'outside' }}>
+                                <li>
+                                    Profile building
+                                </li>
+                                <li>
+                                    Shortlisting of colleges
+                                </li>
+                                <li>
+                                    Applying to the colleges before deadlines
+                                </li>
+                                <li>
+                                    Documentation
+                                </li>
+                            </ul>
                         </div>
                     </Grid>
                 </Grid>

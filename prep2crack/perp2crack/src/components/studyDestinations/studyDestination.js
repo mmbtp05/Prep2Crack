@@ -24,16 +24,16 @@ const StudyDestination = () => {
                 {!mobile ?
                     <>
                         <Grid container>
-                            <Grid item lg={6} xl={6} sx={{ p: { lg: '55px', xl: '55px', md: '55px' } }}>
-                                <Typography className='study' sx={{ pt: '150px' }}>
+                            <Grid item lg={5} xl={5} sx={{ p: { lg: '55px', xl: '55px', md: '55px' } }}>
+                                <Typography className='studyy' sx={{ pt: '100px' }}>
                                     Study Destination
                                 </Typography>
                             </Grid>
-                            <Grid item lg={6} xl={6} sx={{ p: { lg: '80px', xl: '55px', md: '55px' } }}>
+                            <Grid item lg={7} xl={7} style={{display: 'flex',justifyContent: 'center'}} sx={{pt: '55px'}}>
                                 <img
                                     src={Study}
                                     alt="study"
-                                    style={{ width: '400px', height: '300px' }}
+                                    style={{ width: '600px', height: '400px' }}
                                 />
                             </Grid>
                         </Grid>

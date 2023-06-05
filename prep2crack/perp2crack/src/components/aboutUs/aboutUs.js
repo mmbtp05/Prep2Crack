@@ -27,16 +27,16 @@ const AboutUs = () => {
                 {!mobile ?
                     <>
                         <Grid container>
-                            <Grid item lg={6} xl={6} sx={{ p: { lg: '55px', xl: '55px', md: '55px' } }}>
-                                <Typography className='about' sx={{ pt: '150px' }}>
+                            <Grid item lg={5} xl={5} sx={{ p: { lg: '55px', xl: '55px', md: '55px' } }}>
+                                <Typography className='aboutt' sx={{ pt: '150px' }}>
                                     About Us
                                 </Typography>
                             </Grid>
-                            <Grid item lg={6} xl={6} sx={{ p: { lg: '80px', xl: '55px', md: '55px' } }}>
+                            <Grid item lg={7} xl={7} style={{display: 'flex' , justifyContent: 'center'}}>
                                 <img
                                     src={about}
                                     alt="about-us"
-                                    style={{ width: '400px', height: '300px' }}
+                                    style={{ width: '600px', height: '500px' }}
                                 />
                             </Grid>
                         </Grid>
@@ -109,7 +109,7 @@ const AboutUs = () => {
                                 Shubham Khandelwal
                             </Typography>
                             <Typography className='teamcontent'>
-                                Founder, Mathemtician, Athelete
+                                Founder. Mathemtician. Athelete
                             </Typography>
                         </Grid>
                         <Grid item lg={4} xl={4} sm={12} xs={12} md={12} sx={{ pb: '30px' }}>
@@ -127,7 +127,7 @@ const AboutUs = () => {
                                 Anshul Saini
                             </Typography>
                             <Typography className='teamcontent'>
-                                Verbal Trainer, Eloquent
+                                Verbal Trainer. Eloquent.
                             </Typography>
                         </Grid>
                         <Grid item lg={4} xl={4} sm={12} xs={12} md={12} sx={{ pb: '30px' }}>
@@ -145,7 +145,7 @@ const AboutUs = () => {
                                 Manish Jain
                             </Typography>
                             <Typography className='teamcontent'>
-                                CMO, Cogent, Hodophile
+                                CMO. Cogent. Hodophile.
                             </Typography>
                         </Grid>
                     </Grid>

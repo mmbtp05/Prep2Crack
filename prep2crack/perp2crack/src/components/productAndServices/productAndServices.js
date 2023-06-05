@@ -26,21 +26,21 @@ const ProductAndService = () => {
                 <Grid container>
                     {!mobile ?
                         <>
-                            <Grid item lg={6} xl={6} sm={12} xs={12} md={12} sx={{ p: { lg: '55px', xl: '5px', md: '55px' } }}>
-                                <Typography className='pandd' sx={{pt: '100px'}}>
+                            <Grid item lg={5} xl={5} sm={12} xs={12} md={12} sx={{ p: { lg: '55px', xl: '5px', md: '55px' }}}>
+                                <Typography className='pandd' sx={{pt: '130px' , pl: '30px'}}>
                                     Product and Services
                                 </Typography>
-                                <Typography className='panddcontent'>
+                                <Typography className='panddcontent' sx={{pl: '30px'}}>
                                     We will be here for you every step of the way.
                                     <br></br>
                                     Our education consultants will work with you and your family to plan the next step on your educational journey.
                                 </Typography>
                             </Grid>
-                            <Grid item lg={6} xl={6} sm={12} xs={12} md={12} sx={{ p: { lg: '80px', xl: '80px', md: '80px' } }} style={{display: 'flex' , justifyContent:'center'}}>
+                            <Grid item lg={7} xl={7} sm={12} xs={12} md={12} style={{display: 'flex' , justifyContent:'center'}} sx={{pt: '55px'}}>
                                 <img
                                     src={Services}
                                     alt="services"
-                                    style={{ width: '400px', height: '300px' }}
+                                    style={{ width: '500px', height: '400px' }}
                                 />
                             </Grid>
                         </>

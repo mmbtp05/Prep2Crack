@@ -12,7 +12,7 @@ const CareerGuidance = () => {
 
     return (
         <>
-            <Container maxWidth="xl" sx={{ mt: { md: '0px', lg: '150px' } , mb: '30px'}}>
+            <Container maxWidth="xl" sx={{ mt: { md: '0px', lg: '150px' }, mb: '30px' }}>
                 <Grid container>
                     <Grid item lg={6} xl={6} sm={12} xs={12} md={12} sx={{ p: { lg: '50px', xl: '50px' } }} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <img
@@ -32,38 +32,42 @@ const CareerGuidance = () => {
                             Reasons to choose Career Counselling
                         </Typography>
                         <div>
-                            <li>
-                                Empowering students and parents with knowledge
-                            </li>
-                            <li>
-                                Find the right career path
-                            </li>
-                            <li>
-                                Helps you make informed decisions about your future
-                            </li>
-                            <li>
-                                Gaining expert advice on careers
-                            </li>
-                            <li>
-                                Provides information on different careers
-                            </li>
+                            <ul style={{ listStylePosition: 'outside' }}>
+                                <li>
+                                    Empowering students and parents with knowledge
+                                </li>
+                                <li>
+                                    Find the right career path
+                                </li>
+                                <li>
+                                    Helps you make informed decisions about your future
+                                </li>
+                                <li>
+                                    Gaining expert advice on careers
+                                </li>
+                                <li>
+                                    Provides information on different careers
+                                </li>
+                            </ul>
                         </div>
                         <Typography className="subheading">
                             Why Prep2Crack
                         </Typography>
                         <div>
-                            <li>
-                                Personalized guidance
-                            </li>
-                            <li>
-                                Psychometric test and analysis
-                            </li>
-                            <li>
-                                Right course choice for the career chosen
-                            </li>
-                            <li>
-                                Knowledge on admission requirement for top colleges
-                            </li>
+                            <ul style={{ listStylePosition: 'outside' }}>
+                                <li>
+                                    Personalized guidance
+                                </li>
+                                <li>
+                                    Psychometric test and analysis
+                                </li>
+                                <li>
+                                    Right course choice for the career chosen
+                                </li>
+                                <li>
+                                    Knowledge on admission requirement for top colleges
+                                </li>
+                            </ul>
                         </div>
                     </Grid>
                 </Grid>
